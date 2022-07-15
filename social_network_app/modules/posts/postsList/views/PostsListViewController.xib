@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -10,6 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostsListViewController" customModule="social_network_app" customModuleProvider="target">
             <connections>
+                <outlet property="addPostsButton" destination="i1m-E5-425" id="09I-qt-bkd"/>
+                <outlet property="postsSearchView" destination="Agm-cP-qGL" id="crz-Nz-47A"/>
+                <outlet property="postsTableView" destination="Vx0-Iw-sZv" id="fgC-O5-zRZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -18,22 +22,53 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Agm-cP-qGL">
+                <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Agm-cP-qGL">
                     <rect key="frame" x="30" y="64" width="354" height="51"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Vx0-Iw-sZv">
+                    <rect key="frame" x="30" y="135" width="354" height="707"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1m-E5-425">
+                    <rect key="frame" x="338" y="786" width="56" height="56"/>
+                    <color key="backgroundColor" name="dark-primary-color"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="56" id="5NV-su-rg9"/>
+                        <constraint firstAttribute="width" constant="56" id="M77-3e-Y0K"/>
+                    </constraints>
+                    <color key="tintColor" name="secondary-color"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
+                    <connections>
+                        <action selector="addPosts:" destination="-1" eventType="touchUpInside" id="SgS-8c-Y9I"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
+                <constraint firstItem="Vx0-Iw-sZv" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="0Q6-F5-yto"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Agm-cP-qGL" secondAttribute="trailing" constant="30" id="23p-Mw-aDj"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="i1m-E5-425" secondAttribute="trailing" constant="20" id="HvU-fe-b9L"/>
                 <constraint firstItem="Agm-cP-qGL" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="MPH-h5-sQQ"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Vx0-Iw-sZv" secondAttribute="bottom" constant="20" id="VwI-DI-L2c"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="i1m-E5-425" secondAttribute="bottom" constant="20" id="WD4-3h-SAK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Vx0-Iw-sZv" secondAttribute="trailing" constant="30" id="WGx-pC-yBb"/>
+                <constraint firstItem="Vx0-Iw-sZv" firstAttribute="top" secondItem="Agm-cP-qGL" secondAttribute="bottom" constant="20" id="ouv-mf-yPk"/>
                 <constraint firstItem="Agm-cP-qGL" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="tkO-1M-tdX"/>
             </constraints>
             <point key="canvasLocation" x="131.8840579710145" y="66.964285714285708"/>
         </view>
     </objects>
     <resources>
+        <image name="plus" catalog="system" width="128" height="113"/>
+        <namedColor name="dark-primary-color">
+            <color red="0.18823529411764706" green="0.24705882352941178" blue="0.62352941176470589" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="secondary-color">
+            <color red="0.37647058823529411" green="0.49019607843137253" blue="0.54509803921568623" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

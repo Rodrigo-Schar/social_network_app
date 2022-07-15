@@ -28,6 +28,12 @@
 		845DC003287679D0003FB5D0 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DC002287679D0003FB5D0 /* UserProfileViewModel.swift */; };
 		845DC00A287E3CB0003FB5D0 /* ImagePickerHelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DC009287E3CB0003FB5D0 /* ImagePickerHelperViewController.swift */; };
 		845DC00C287E3D28003FB5D0 /* DeviceImageLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DC00B287E3D28003FB5D0 /* DeviceImageLibraryViewController.swift */; };
+		845DC01D28811708003FB5D0 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DC01B28811708003FB5D0 /* NewPostViewController.swift */; };
+		845DC01E28811708003FB5D0 /* NewPostViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845DC01C28811708003FB5D0 /* NewPostViewController.xib */; };
+		845DC02028811D0A003FB5D0 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DC01F28811D0A003FB5D0 /* Post.swift */; };
+		845DC02228811E2A003FB5D0 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DC02128811E2A003FB5D0 /* PostsViewModel.swift */; };
+		845DC02628812370003FB5D0 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DC02428812370003FB5D0 /* PostTableViewCell.swift */; };
+		845DC02728812370003FB5D0 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845DC02528812370003FB5D0 /* PostTableViewCell.xib */; };
 		8471C862286C980E005E069A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471C861286C980E005E069A /* AppDelegate.swift */; };
 		8471C864286C980E005E069A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471C863286C980E005E069A /* SceneDelegate.swift */; };
 		8471C866286C980E005E069A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471C865286C980E005E069A /* ViewController.swift */; };
@@ -86,6 +92,12 @@
 		845DC002287679D0003FB5D0 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
 		845DC009287E3CB0003FB5D0 /* ImagePickerHelperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHelperViewController.swift; sourceTree = "<group>"; };
 		845DC00B287E3D28003FB5D0 /* DeviceImageLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceImageLibraryViewController.swift; sourceTree = "<group>"; };
+		845DC01B28811708003FB5D0 /* NewPostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
+		845DC01C28811708003FB5D0 /* NewPostViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewPostViewController.xib; sourceTree = "<group>"; };
+		845DC01F28811D0A003FB5D0 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		845DC02128811E2A003FB5D0 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
+		845DC02428812370003FB5D0 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		845DC02528812370003FB5D0 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
 		8471C85E286C980E005E069A /* social_network_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = social_network_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8471C861286C980E005E069A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8471C863286C980E005E069A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -267,6 +279,7 @@
 			children = (
 				8471C8A4286C9B23005E069A /* User.swift */,
 				845DBFC1287628CD003FB5D0 /* BaseModel.swift */,
+				845DC01F28811D0A003FB5D0 /* Post.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -302,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				845DBFF128764864003FB5D0 /* PostsListViewController.swift */,
+				845DC01B28811708003FB5D0 /* NewPostViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -309,7 +323,9 @@
 		845DBFEF28764832003FB5D0 /* views */ = {
 			isa = PBXGroup;
 			children = (
+				845DC02328812353003FB5D0 /* cells */,
 				845DBFF228764864003FB5D0 /* PostsListViewController.xib */,
+				845DC01C28811708003FB5D0 /* NewPostViewController.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -317,6 +333,7 @@
 		845DBFF02876483D003FB5D0 /* viewModels */ = {
 			isa = PBXGroup;
 			children = (
+				845DC02128811E2A003FB5D0 /* PostsViewModel.swift */,
 			);
 			path = viewModels;
 			sourceTree = "<group>";
@@ -378,6 +395,15 @@
 				845DC00B287E3D28003FB5D0 /* DeviceImageLibraryViewController.swift */,
 			);
 			path = helpers;
+			sourceTree = "<group>";
+		};
+		845DC02328812353003FB5D0 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				845DC02428812370003FB5D0 /* PostTableViewCell.swift */,
+				845DC02528812370003FB5D0 /* PostTableViewCell.xib */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 		8471C855286C980E005E069A = {
@@ -580,9 +606,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8471C871286C980F005E069A /* LaunchScreen.storyboard in Resources */,
+				845DC02728812370003FB5D0 /* PostTableViewCell.xib in Resources */,
 				845DBFD1287635BB003FB5D0 /* LoginViewController.xib in Resources */,
 				845DBFF428764864003FB5D0 /* PostsListViewController.xib in Resources */,
 				8471C895286C9875005E069A /* GoogleService-Info.plist in Resources */,
+				845DC01E28811708003FB5D0 /* NewPostViewController.xib in Resources */,
 				8471C86E286C980F005E069A /* Assets.xcassets in Resources */,
 				845DC0012876756F003FB5D0 /* UserProfileViewController.xib in Resources */,
 				845DBFDB28763C77003FB5D0 /* SignUpViewController.xib in Resources */,
@@ -614,22 +642,26 @@
 				845DC00C287E3D28003FB5D0 /* DeviceImageLibraryViewController.swift in Sources */,
 				845DC00A287E3CB0003FB5D0 /* ImagePickerHelperViewController.swift in Sources */,
 				845DBFC028762621003FB5D0 /* FirebaseManager.swift in Sources */,
+				845DC02028811D0A003FB5D0 /* Post.swift in Sources */,
 				845DBFF828764DFC003FB5D0 /* EncodableExtension.swift in Sources */,
 				845DC0002876756F003FB5D0 /* UserProfileViewController.swift in Sources */,
 				845DBFDD28763F1D003FB5D0 /* SignUpViewModel.swift in Sources */,
 				8471C866286C980E005E069A /* ViewController.swift in Sources */,
 				845DBFD428763890003FB5D0 /* LoginViewModel.swift in Sources */,
 				845DBFC2287628CD003FB5D0 /* BaseModel.swift in Sources */,
+				845DC01D28811708003FB5D0 /* NewPostViewController.swift in Sources */,
 				8471C862286C980E005E069A /* AppDelegate.swift in Sources */,
 				845DBFEB287643FF003FB5D0 /* UsersLocal+CoreDataProperties.swift in Sources */,
 				8471C864286C980E005E069A /* SceneDelegate.swift in Sources */,
 				845DBFDA28763C77003FB5D0 /* SignUpViewController.swift in Sources */,
+				845DC02628812370003FB5D0 /* PostTableViewCell.swift in Sources */,
 				8471C8A5286C9B23005E069A /* User.swift in Sources */,
 				8471C86C286C980E005E069A /* social_network_app.xcdatamodeld in Sources */,
 				845DBFD0287635BB003FB5D0 /* LoginViewController.swift in Sources */,
 				845DBFEA287643FF003FB5D0 /* UsersLocal+CoreDataClass.swift in Sources */,
 				845DBFC828763365003FB5D0 /* AuthFirebaseManager.swift in Sources */,
 				845DBFE128764138003FB5D0 /* CoreDataManager.swift in Sources */,
+				845DC02228811E2A003FB5D0 /* PostsViewModel.swift in Sources */,
 				845DC003287679D0003FB5D0 /* UserProfileViewModel.swift in Sources */,
 				845DBFC628762C62003FB5D0 /* Buttons.swift in Sources */,
 				845DBFF328764864003FB5D0 /* PostsListViewController.swift in Sources */,

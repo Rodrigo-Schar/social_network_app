@@ -48,9 +48,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarVC.viewControllers = [
             createNavController(for: PostsListViewController(), title: "Home", image: UIImage(named: "homeIconSelected")!),
                 
-            createNavController(for: PostsListViewController(), title: "Chats", image: UIImage(named: "chatsIcon")!),
+            createNavController(for: UserProfileViewController(), title: "Chats", image: UIImage(named: "chatsIcon")!),
                 
-            createNavController(for: PostsListViewController(), title: "Friends", image: UIImage(named: "friendsIcon")!),
+            createNavController(for: UserProfileViewController(), title: "Friends", image: UIImage(named: "friendsIcon")!),
                 
             createNavController(for: UserProfileViewController(), title: "Profile", image: UIImage(named: "profileIcon")!)
         ]
