@@ -12,8 +12,10 @@ class LoginViewModel {
     
     static let shared = LoginViewModel()
     
+    var users = [UsersLocal]()
+    
     func login(email: String, password: String, completion: @escaping (Result<User, Error>) -> Void ) {
-        setLoggedIn(email: email)
+        
         AuthFirebaseManager.shared.login(email: email, password: password) { result in
             completion(result)
         }
@@ -22,37 +24,45 @@ class LoginViewModel {
     func verifyValidUser() -> Bool {
         var validUser = true
         let context = CoreDataManager.shared.getContext()
-        let fetchRequest = NSFetchRequest<UsersLocal>(entityName: "UsersLocal")
-        fetchRequest.fetchLimit = 1
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", argumentArray:["isLoggedIn", true])
+        let fetchRequest: NSFetchRequest<UsersLocal>
+        fetchRequest = UsersLocal.fetchRequest()
 
         do {
-            let results = try context.fetch(fetchRequest)
-            if (results.count == 0){
+            users = try context.fetch(fetchRequest)
+            if (users.count == 0){
                 validUser = false
             } else {
                 validUser = true
             }
-        }catch let error {
-            print("Error....: \(error)")
+            
+        } catch(let err) {
+            print("Error", err)
         }
         
         return validUser
     }
     
-    func setLoggedIn(email: String) {
+    func addUserLocal(user: User){
         let context = CoreDataManager.shared.getContext()
-        let fetchRequest = NSFetchRequest<UsersLocal>(entityName: "UsersLocal")
-        fetchRequest.fetchLimit = 1
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", argumentArray:["email", email])
-
+        
+        guard let entity = NSEntityDescription.entity(forEntityName: "UsersLocal", in: context) else { return }
+        guard let userLocal = NSManagedObject(entity: entity, insertInto: context) as? UsersLocal else { return }
+        
+        userLocal.id = user.id
+        userLocal.name = user.name
+        userLocal.nickname = user.nickname
+        userLocal.email = user.email
+        userLocal.password = user.password
+        userLocal.imageUrl = user.imageUrl
+        userLocal.createdAt = Date()
+        userLocal.updatedAt = Date()
+        
         do {
-            let results = try context.fetch(fetchRequest)
-            results.first?.isLoggedIn = true
-            try? context.save()
+            try context.save()
+            print("created")
             
-        }catch let error {
-            print("Error....: \(error)")
+        } catch(let err) {
+            print("Error", err)
         }
     }
 }

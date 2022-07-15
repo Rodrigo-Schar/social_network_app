@@ -5,13 +5,12 @@
         <attribute name="email" attributeType="String"/>
         <attribute name="id" attributeType="String"/>
         <attribute name="imageUrl" optional="YES" attributeType="String"/>
-        <attribute name="isLoggedIn" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="name" attributeType="String"/>
         <attribute name="nickname" optional="YES" attributeType="String"/>
         <attribute name="password" attributeType="String"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
     </entity>
     <elements>
-        <element name="UsersLocal" positionX="-45" positionY="0" width="128" height="164"/>
+        <element name="UsersLocal" positionX="-45" positionY="0" width="128" height="149"/>
     </elements>
 </model>

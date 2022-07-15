@@ -14,6 +14,6 @@ struct User: Codable, BaseModel {
     let email: String
     let password: String
     let imageUrl: String
-    let createdAt: Date
-    let updatedAt: Date
+    let createdAt: Double
+    let updatedAt: Double
 }

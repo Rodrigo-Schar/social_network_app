@@ -26,6 +26,8 @@
 		845DC0002876756F003FB5D0 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DBFFE2876756F003FB5D0 /* UserProfileViewController.swift */; };
 		845DC0012876756F003FB5D0 /* UserProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845DBFFF2876756F003FB5D0 /* UserProfileViewController.xib */; };
 		845DC003287679D0003FB5D0 /* UserProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DC002287679D0003FB5D0 /* UserProfileViewModel.swift */; };
+		845DC00A287E3CB0003FB5D0 /* ImagePickerHelperViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DC009287E3CB0003FB5D0 /* ImagePickerHelperViewController.swift */; };
+		845DC00C287E3D28003FB5D0 /* DeviceImageLibraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DC00B287E3D28003FB5D0 /* DeviceImageLibraryViewController.swift */; };
 		8471C862286C980E005E069A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471C861286C980E005E069A /* AppDelegate.swift */; };
 		8471C864286C980E005E069A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471C863286C980E005E069A /* SceneDelegate.swift */; };
 		8471C866286C980E005E069A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471C865286C980E005E069A /* ViewController.swift */; };
@@ -82,6 +84,8 @@
 		845DBFFE2876756F003FB5D0 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		845DBFFF2876756F003FB5D0 /* UserProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserProfileViewController.xib; sourceTree = "<group>"; };
 		845DC002287679D0003FB5D0 /* UserProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewModel.swift; sourceTree = "<group>"; };
+		845DC009287E3CB0003FB5D0 /* ImagePickerHelperViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHelperViewController.swift; sourceTree = "<group>"; };
+		845DC00B287E3D28003FB5D0 /* DeviceImageLibraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceImageLibraryViewController.swift; sourceTree = "<group>"; };
 		8471C85E286C980E005E069A /* social_network_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = social_network_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8471C861286C980E005E069A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8471C863286C980E005E069A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -150,6 +154,7 @@
 		845DBFC328762BED003FB5D0 /* utilities */ = {
 			isa = PBXGroup;
 			children = (
+				845DC004287E3C3E003FB5D0 /* helpers */,
 				845DBFF628764DE5003FB5D0 /* extensions */,
 				845DBFC428762C10003FB5D0 /* views */,
 			);
@@ -364,6 +369,15 @@
 				845DC002287679D0003FB5D0 /* UserProfileViewModel.swift */,
 			);
 			path = viewsModels;
+			sourceTree = "<group>";
+		};
+		845DC004287E3C3E003FB5D0 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				845DC009287E3CB0003FB5D0 /* ImagePickerHelperViewController.swift */,
+				845DC00B287E3D28003FB5D0 /* DeviceImageLibraryViewController.swift */,
+			);
+			path = helpers;
 			sourceTree = "<group>";
 		};
 		8471C855286C980E005E069A = {
@@ -597,6 +611,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845DC00C287E3D28003FB5D0 /* DeviceImageLibraryViewController.swift in Sources */,
+				845DC00A287E3CB0003FB5D0 /* ImagePickerHelperViewController.swift in Sources */,
 				845DBFC028762621003FB5D0 /* FirebaseManager.swift in Sources */,
 				845DBFF828764DFC003FB5D0 /* EncodableExtension.swift in Sources */,
 				845DC0002876756F003FB5D0 /* UserProfileViewController.swift in Sources */,

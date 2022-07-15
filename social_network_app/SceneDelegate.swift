@@ -24,6 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if validUser {
             // Create VC for TabBar
             let rootViewController = getRootViewControllerForValidUser()
+            UserProfileViewModel.shared.getDataUserNetwork()
             self.window?.rootViewController = rootViewController
         } else {
             let rootViewController = getRootViewControllerForInvalidUser()
