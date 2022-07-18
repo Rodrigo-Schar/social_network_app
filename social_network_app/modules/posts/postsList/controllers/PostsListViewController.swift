@@ -9,20 +9,20 @@ import UIKit
 
 class PostsListViewController: UIViewController {
     
-    @IBOutlet weak var postsSearchView: UISearchBar!
+    @IBOutlet weak var postsSearchBar: UISearchBar!
     @IBOutlet weak var postsTableView: UITableView!
     @IBOutlet weak var addPostsButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTableview()
+        setupView()
         setupImageButton()
         getPosts()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        getPosts()
+        self.postsTableView.reloadData()
     }
     
     func getPosts() {
@@ -34,12 +34,13 @@ class PostsListViewController: UIViewController {
         }
     }
     
-    func setupTableview() {
-        postsTableView.delegate = self
-        postsTableView.dataSource = self
+    func setupView() {
+        self.postsTableView.delegate = self
+        self.postsTableView.dataSource = self
+        self.postsSearchBar.delegate = self
         
         let uiNib = UINib(nibName: "PostTableViewCell", bundle: nil)
-        postsTableView.register(uiNib, forCellReuseIdentifier: "PostCell")
+        self.postsTableView.register(uiNib, forCellReuseIdentifier: "PostCell")
     }
     
     func setupImageButton() {
@@ -71,6 +72,20 @@ extension PostsListViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+}
+
+extension PostsListViewController: UISearchBarDelegate {
     
-    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        guard let text = searchBar.text else { return }
+        
+        if text.isEmpty {
+            PostsViewModel.shared.posts = PostsViewModel.shared.postsList
+            self.postsTableView.reloadData()
+        } else {
+            PostsViewModel.shared.searchPost(text: text)
+            self.postsTableView.reloadData()
+        }
+        
+    }
 }

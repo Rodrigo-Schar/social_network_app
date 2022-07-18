@@ -50,7 +50,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 
             createNavController(for: UserProfileViewController(), title: "Chats", image: UIImage(named: "chatsIcon")!),
                 
-            createNavController(for: UserProfileViewController(), title: "Friends", image: UIImage(named: "friendsIcon")!),
+            createNavController(for: PostsListViewController(), title: "Friends", image: UIImage(named: "friendsIcon")!),
                 
             createNavController(for: UserProfileViewController(), title: "Profile", image: UIImage(named: "profileIcon")!)
         ]

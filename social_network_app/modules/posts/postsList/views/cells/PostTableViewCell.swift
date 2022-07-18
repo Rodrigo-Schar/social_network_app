@@ -28,6 +28,20 @@ class PostTableViewCell: UITableViewCell {
         titleLabel.text = post.title
         projectUrlLabel.text = post.projectUrl
         descriptionLabel.text = post.description
+        loadPostImage(post: post)
+    }
+    
+    func loadPostImage(post: Post) {
+        PostsViewModel.shared.loadPostImage(post: post) { result in
+            switch result {
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        self.imageImageView.image = UIImage(data: data)
+                    }
+                case .failure(let error):
+                    print(error)
+            }
+        }
     }
     
 }

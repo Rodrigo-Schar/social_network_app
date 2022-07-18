@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PostsListViewController" customModule="social_network_app" customModuleProvider="target">
             <connections>
                 <outlet property="addPostsButton" destination="i1m-E5-425" id="09I-qt-bkd"/>
-                <outlet property="postsSearchView" destination="Agm-cP-qGL" id="crz-Nz-47A"/>
+                <outlet property="postsSearchBar" destination="Agm-cP-qGL" id="W7v-XT-xru"/>
                 <outlet property="postsTableView" destination="Vx0-Iw-sZv" id="fgC-O5-zRZ"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
