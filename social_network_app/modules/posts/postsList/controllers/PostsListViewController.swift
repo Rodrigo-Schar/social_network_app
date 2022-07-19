@@ -12,6 +12,10 @@ class PostsListViewController: UIViewController {
     @IBOutlet weak var postsSearchBar: UISearchBar!
     @IBOutlet weak var postsTableView: UITableView!
     @IBOutlet weak var addPostsButton: UIButton!
+    
+    lazy var viewModel = {
+        PostsViewModel.shared
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +30,8 @@ class PostsListViewController: UIViewController {
     }
     
     func getPosts() {
-        PostsViewModel.shared.loadPosts()
-        PostsViewModel.shared.reloadData = { [weak self] in
+        viewModel.loadPosts()
+        viewModel.reloadData = { [weak self] in
             DispatchQueue.main.async {
                 self?.postsTableView.reloadData()
             }
@@ -39,8 +43,8 @@ class PostsListViewController: UIViewController {
         self.postsTableView.dataSource = self
         self.postsSearchBar.delegate = self
         
-        let uiNib = UINib(nibName: "PostTableViewCell", bundle: nil)
-        self.postsTableView.register(uiNib, forCellReuseIdentifier: "PostCell")
+        let uiNib = UINib(nibName: ConstantVariables.postCellNib, bundle: nil)
+        self.postsTableView.register(uiNib, forCellReuseIdentifier: ConstantVariables.postCellIdentifier)
     }
     
     func setupImageButton() {
@@ -49,6 +53,8 @@ class PostsListViewController: UIViewController {
 
     @IBAction func addPosts(_ sender: Any) {
         let vc = NewPostViewController()
+        vc.typeView = 1
+        vc.delegate = self
         show(vc, sender: nil)
     }
     
@@ -57,20 +63,28 @@ class PostsListViewController: UIViewController {
 extension PostsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return 300
-        }
+        return 300
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return PostsViewModel.shared.posts.count
+        return viewModel.posts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = postsTableView.dequeueReusableCell(withIdentifier: "PostCell") as? PostTableViewCell ?? PostTableViewCell()
+        let cell = postsTableView.dequeueReusableCell(withIdentifier: ConstantVariables.postCellIdentifier) as? PostTableViewCell ?? PostTableViewCell()
         
-        let post = PostsViewModel.shared.posts[indexPath.row]
+        let post = viewModel.posts[indexPath.row]
         cell.setData(post: post)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let post = viewModel.posts[indexPath.row]
+        viewModel.addPostForDetail(post: post)
+        
+        let vc = PostDetailViewController()
+        show(vc, sender: nil)
     }
 }
 
@@ -80,12 +94,23 @@ extension PostsListViewController: UISearchBarDelegate {
         guard let text = searchBar.text else { return }
         
         if text.isEmpty {
-            PostsViewModel.shared.posts = PostsViewModel.shared.postsList
+            viewModel.posts = viewModel.postsOriginalList
             self.postsTableView.reloadData()
         } else {
-            PostsViewModel.shared.searchPost(text: text)
+            viewModel.searchPost(text: text)
             self.postsTableView.reloadData()
         }
         
     }
+}
+
+extension PostsListViewController: NewEditPostDelegate {
+    func postEdited(post: Post) {
+        if let index = viewModel.posts.firstIndex(where: { post.id == $0.id }) {
+            let indexPath = IndexPath(row: index, section: 0)
+            self.postsTableView.reloadRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    
 }

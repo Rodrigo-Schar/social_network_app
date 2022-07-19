@@ -11,8 +11,10 @@ class PostTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var projectUrlLabel: UILabel!
-    @IBOutlet weak var imageImageView: UIImageView!
+    @IBOutlet weak var pictureImageView: UIImageView!
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var containerView: UIView!
+    @IBOutlet weak var containerPictureView: UIView!
     
 
     override func awakeFromNib() {
@@ -24,7 +26,13 @@ class PostTableViewCell: UITableViewCell {
     }
     
     func setData(post: Post) {
-        self.contentView.layer.borderColor = UIColor.black.cgColor
+        containerView.layer.cornerRadius = 10
+        containerView.layer.borderWidth = 1
+        containerView.layer.borderColor = UIColor.lightGray.cgColor
+        containerPictureView.layer.borderWidth = 1
+        containerPictureView.layer.borderColor = UIColor.black.cgColor
+        
+        
         titleLabel.text = post.title
         projectUrlLabel.text = post.projectUrl
         descriptionLabel.text = post.description
@@ -36,7 +44,7 @@ class PostTableViewCell: UITableViewCell {
             switch result {
                 case .success(let data):
                     DispatchQueue.main.async {
-                        self.imageImageView.image = UIImage(data: data)
+                        self.pictureImageView.image = UIImage(data: data)
                     }
                 case .failure(let error):
                     print(error)

@@ -15,14 +15,15 @@ class PostsViewModel {
     var reloadData: (() -> Void)?
     
     var posts = [Post]()
-    var postsList = [Post]()
+    var postsOriginalList = [Post]()
+    var postDetail = [Post]()
     var dataImage = Data()
     
     func loadPosts() {
         firebaseManager.getDocuments(type: Post.self, forCollection: .posts) { result in
             switch result {
             case .success(let posts):
-                self.postsList = posts
+                self.postsOriginalList = posts
                 self.posts = posts
             case .failure(let error):
                 print(error)
@@ -37,6 +38,16 @@ class PostsViewModel {
         let post = Post(id: postId, title: title, description: description, imageUrl: pathImage, projectUrl: projecUrl, likes: 1, ownerId: ownerId, createdAt: 1.0, updatedAt: 1.0)
         
         firebaseManager.addDocument(document: post, collection: .posts) { result in
+            completion(result)
+        }
+    }
+    
+    func editPost(postId: String, title: String, description: String, projecUrl: String, ownerId: String, completion: @escaping (Result<Post, Error>) -> Void) {
+        
+        let pathImage = addPostImage(data: dataImage, postId: postId)
+        let post = Post(id: postId, title: title, description: description, imageUrl: pathImage, projectUrl: projecUrl, likes: 1, ownerId: ownerId, createdAt: 1.0, updatedAt: 1.0)
+        
+        firebaseManager.updateDocument(document: post, collection: .posts) { result in
             completion(result)
         }
     }
@@ -68,6 +79,11 @@ class PostsViewModel {
         posts = posts.filter({
             $0.title.contains(text.lowercased())
         })
+    }
+    
+    func addPostForDetail(post: Post) {
+        postDetail.removeAll()
+        postDetail.append(post)
     }
     
     

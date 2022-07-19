@@ -12,18 +12,55 @@ import FirebaseStorage
 
 class UserProfileViewModel {
     
+    let firebaseManager = FirebaseManager.shared
     static let shared = UserProfileViewModel()
     
     let db = Firestore.firestore()
-    var users = [User]()
+    var userLogin: User?
+    var user: User?
+    var myPosts = [Post]()
+    var postDetail = [Post]()
     
-    func getDataUserNetwork() {
-        FirebaseManager.shared.getDocuments(type: User.self, forCollection: FirebaseCollections.users) { result in
+    func getDataUser() {
+        if let userData = userLogin {
+            getDataUserNetwork(id: userData.id)
+        } else {
+            let userLocal = getDataUserLocal()
+            guard let userId = userLocal?.id else { return }
+            getDataUserNetwork(id: userId)
+        }
+    }
+    
+    func getDataUserNetwork(id: String) {
+        firebaseManager.getDocumentsByParameter(type: User.self, forCollection: .users, field: "id", parameter: id) { result in
             switch result {
-                case .success(let users):
-                    self.users.removeAll()
-                    self.users = users
-                    print(self.users)
+                case .success(let posts):
+                    if let userData = posts.first {
+                        self.user = userData
+                    }
+                case .failure(let error):
+                    print(error)
+            }
+        }
+    }
+    
+    func getDataUserLocal() -> UsersLocal? {
+        let user: UsersLocal?
+        let context = CoreDataManager.shared.getContext()
+        let fetchRequest = NSFetchRequest<UsersLocal>(entityName: "UsersLocal")
+        fetchRequest.fetchLimit = 1
+                
+        let results = try?context.fetch(fetchRequest)
+        user = results?.first
+
+        return user
+    }
+    
+    func loadMyPosts(ownerId: String) {
+        firebaseManager.getDocumentsByParameter(type: Post.self, forCollection: .posts, field: "ownerId", parameter: ownerId) { result in
+            switch result {
+                case .success(let posts):
+                    self.myPosts = posts
                 case .failure(let error):
                     print(error)
             }
@@ -40,7 +77,7 @@ class UserProfileViewModel {
             if error == nil && metadata != nil {
                 let userEd = User(id: user.id, name: user.name, nickname: user.nickname, email: user.email, password: user.password, imageUrl: path, createdAt: user.createdAt, updatedAt: 1.0)
                 FirebaseManager.shared.updateDocument(document: userEd, collection: .users) { result in
-                    self.getDataUserNetwork()
+                    //self.getDataUserNetwork()
                 }
             }
         }
@@ -52,19 +89,6 @@ class UserProfileViewModel {
         fileRef.getData(maxSize: 5 * 1024 * 1024) { result in
             completion(result)
         }
-    }
-    
-    func getDataUserLocal() -> UsersLocal? {
-        let user: UsersLocal?
-        let context = CoreDataManager.shared.getContext()
-        let fetchRequest = NSFetchRequest<UsersLocal>(entityName: "UsersLocal")
-        fetchRequest.fetchLimit = 1
-        fetchRequest.predicate = NSPredicate(format: "%K == %@", argumentArray:["isLoggedIn", true])
-        
-        let results = try?context.fetch(fetchRequest)
-        user = results?.first
-
-        return user
     }
     
     func setLogOut(email: String) {
@@ -83,5 +107,10 @@ class UserProfileViewModel {
         }catch let error {
             print("Error....: \(error)")
         }
+    }
+    
+    func addPostForDetail(post: Post) {
+        postDetail.removeAll()
+        postDetail.append(post)
     }
 }

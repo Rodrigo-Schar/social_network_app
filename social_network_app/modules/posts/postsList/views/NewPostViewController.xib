@@ -11,7 +11,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewPostViewController" customModule="social_network_app" customModuleProvider="target">
             <connections>
+                <outlet property="addEditLabel" destination="tvk-6M-Aek" id="Bi8-Ph-T1J"/>
                 <outlet property="descriptionTextField" destination="ffT-SM-am0" id="myR-Ls-hdm"/>
+                <outlet property="newEditPostButton" destination="Vj1-zI-8Hs" id="wao-p2-ssn"/>
                 <outlet property="postImageImageView" destination="QMV-4M-ku2" id="Grf-e1-aQL"/>
                 <outlet property="titleTextField" destination="G5k-bQ-BWM" id="aRk-1R-98j"/>
                 <outlet property="urlTextField" destination="jgf-LJ-xwd" id="GxK-m0-djm"/>
@@ -91,9 +93,9 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vj1-zI-8Hs" customClass="PrimaryButton" customModule="social_network_app" customModuleProvider="target">
-                    <rect key="frame" x="30" y="649" width="354" height="31"/>
+                    <rect key="frame" x="30" y="649" width="354" height="14"/>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="plain" title="Post"/>
+                    <buttonConfiguration key="configuration" style="plain"/>
                     <connections>
                         <action selector="addPost:" destination="-1" eventType="touchUpInside" id="PO3-tn-s8H"/>
                     </connections>

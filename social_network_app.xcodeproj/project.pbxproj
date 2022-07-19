@@ -34,6 +34,9 @@
 		845DC02228811E2A003FB5D0 /* PostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DC02128811E2A003FB5D0 /* PostsViewModel.swift */; };
 		845DC02628812370003FB5D0 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DC02428812370003FB5D0 /* PostTableViewCell.swift */; };
 		845DC02728812370003FB5D0 /* PostTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845DC02528812370003FB5D0 /* PostTableViewCell.xib */; };
+		845DC02A288607EE003FB5D0 /* PostDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DC028288607EE003FB5D0 /* PostDetailViewController.swift */; };
+		845DC02B288607EE003FB5D0 /* PostDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845DC029288607EE003FB5D0 /* PostDetailViewController.xib */; };
+		845DC02D28863561003FB5D0 /* ConstantVariables.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DC02C28863561003FB5D0 /* ConstantVariables.swift */; };
 		8471C862286C980E005E069A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471C861286C980E005E069A /* AppDelegate.swift */; };
 		8471C864286C980E005E069A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471C863286C980E005E069A /* SceneDelegate.swift */; };
 		8471C866286C980E005E069A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471C865286C980E005E069A /* ViewController.swift */; };
@@ -98,6 +101,9 @@
 		845DC02128811E2A003FB5D0 /* PostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsViewModel.swift; sourceTree = "<group>"; };
 		845DC02428812370003FB5D0 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		845DC02528812370003FB5D0 /* PostTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostTableViewCell.xib; sourceTree = "<group>"; };
+		845DC028288607EE003FB5D0 /* PostDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostDetailViewController.swift; sourceTree = "<group>"; };
+		845DC029288607EE003FB5D0 /* PostDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PostDetailViewController.xib; sourceTree = "<group>"; };
+		845DC02C28863561003FB5D0 /* ConstantVariables.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstantVariables.swift; sourceTree = "<group>"; };
 		8471C85E286C980E005E069A /* social_network_app.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = social_network_app.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8471C861286C980E005E069A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8471C863286C980E005E069A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -316,6 +322,7 @@
 			children = (
 				845DBFF128764864003FB5D0 /* PostsListViewController.swift */,
 				845DC01B28811708003FB5D0 /* NewPostViewController.swift */,
+				845DC028288607EE003FB5D0 /* PostDetailViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -326,6 +333,7 @@
 				845DC02328812353003FB5D0 /* cells */,
 				845DBFF228764864003FB5D0 /* PostsListViewController.xib */,
 				845DC01C28811708003FB5D0 /* NewPostViewController.xib */,
+				845DC029288607EE003FB5D0 /* PostDetailViewController.xib */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -393,6 +401,7 @@
 			children = (
 				845DC009287E3CB0003FB5D0 /* ImagePickerHelperViewController.swift */,
 				845DC00B287E3D28003FB5D0 /* DeviceImageLibraryViewController.swift */,
+				845DC02C28863561003FB5D0 /* ConstantVariables.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -605,6 +614,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				845DC02B288607EE003FB5D0 /* PostDetailViewController.xib in Resources */,
 				8471C871286C980F005E069A /* LaunchScreen.storyboard in Resources */,
 				845DC02728812370003FB5D0 /* PostTableViewCell.xib in Resources */,
 				845DBFD1287635BB003FB5D0 /* LoginViewController.xib in Resources */,
@@ -652,6 +662,8 @@
 				845DC01D28811708003FB5D0 /* NewPostViewController.swift in Sources */,
 				8471C862286C980E005E069A /* AppDelegate.swift in Sources */,
 				845DBFEB287643FF003FB5D0 /* UsersLocal+CoreDataProperties.swift in Sources */,
+				845DC02D28863561003FB5D0 /* ConstantVariables.swift in Sources */,
+				845DC02A288607EE003FB5D0 /* PostDetailViewController.swift in Sources */,
 				8471C864286C980E005E069A /* SceneDelegate.swift in Sources */,
 				845DBFDA28763C77003FB5D0 /* SignUpViewController.swift in Sources */,
 				845DC02628812370003FB5D0 /* PostTableViewCell.swift in Sources */,
