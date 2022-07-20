@@ -15,6 +15,9 @@ enum FirebaseErrors: Error {
 
 enum FirebaseCollections: String {
     case users
+    case posts
+    case reactions
+    case comments
 }
 
 class FirebaseManager {
@@ -43,8 +46,65 @@ class FirebaseManager {
 
     }
     
+    func getDocumentsByParameter<T: Decodable>(type: T.Type, forCollection collection: FirebaseCollections, field: String, parameter: String, completion: @escaping ( Result<[T], Error>) -> Void  ) {
+        db.collection(collection.rawValue).whereField(field, isEqualTo: parameter).getDocuments { querySnapshot, error in
+            guard error == nil else { return completion(.failure(error!)) }
+            guard let documents = querySnapshot?.documents else { return completion(.success([])) }
+            
+            var items = [T]()
+            let json = JSONDecoder()
+            for document in documents {
+                if let data = try? JSONSerialization.data(withJSONObject: document.data(), options: []),
+                   let item = try? json.decode(type, from: data) {
+                    items.append(item)
+                }
+            }
+            completion(.success(items))
+        }
+
+    }
+    
+    func getDocumentsByTwoParameter<T: Decodable>(type: T.Type, forCollection collection: FirebaseCollections, field1: String, field2: String, parameter1: String, parameter2: String, completion: @escaping ( Result<[T], Error>) -> Void  ) {
+        db.collection(collection.rawValue)
+            .whereField(field1, isEqualTo: parameter1)
+            .whereField(field2, isEqualTo: parameter2)
+            .getDocuments { querySnapshot, error in
+            guard error == nil else { return completion(.failure(error!)) }
+            guard let documents = querySnapshot?.documents else { return completion(.success([])) }
+            
+            var items = [T]()
+            let json = JSONDecoder()
+            for document in documents {
+                if let data = try? JSONSerialization.data(withJSONObject: document.data(), options: []),
+                   let item = try? json.decode(type, from: data) {
+                    items.append(item)
+                }
+            }
+            completion(.success(items))
+        }
+
+    }
+    
     func listenCollectionChanges<T: Decodable>(type: T.Type, collection: FirebaseCollections, completion: @escaping ( Result<[T], Error>) -> Void  ) {
         db.collection(collection.rawValue).addSnapshotListener { querySnapshot, error in
+            guard error == nil else { return completion(.failure(error!)) }
+            guard let documents = querySnapshot?.documents else { return completion(.success([])) }
+            
+            
+            var items = [T]()
+            let json = JSONDecoder()
+            for document in documents {
+                if let data = try? JSONSerialization.data(withJSONObject: document.data(), options: []),
+                   let item = try? json.decode(type, from: data) {
+                    items.append(item)
+                }
+            }
+            completion(.success(items))
+        }
+    }
+    
+    func listenCollectionChangesByParameter<T: Decodable>(type: T.Type, collection: FirebaseCollections, field: String, parameter: String, completion: @escaping ( Result<[T], Error>) -> Void  ) {
+        db.collection(collection.rawValue).whereField(field, isEqualTo: parameter).addSnapshotListener { querySnapshot, error in
             guard error == nil else { return completion(.failure(error!)) }
             guard let documents = querySnapshot?.documents else { return completion(.success([])) }
             

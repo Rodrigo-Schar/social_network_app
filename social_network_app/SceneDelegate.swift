@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if validUser {
             // Create VC for TabBar
             let rootViewController = getRootViewControllerForValidUser()
-            UserProfileViewModel.shared.getDataUserNetwork()
+            UserProfileViewModel.shared.getDataUser()
             self.window?.rootViewController = rootViewController
         } else {
             let rootViewController = getRootViewControllerForInvalidUser()
@@ -48,7 +48,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         tabBarVC.viewControllers = [
             createNavController(for: PostsListViewController(), title: "Home", image: UIImage(named: "homeIconSelected")!),
                 
-            createNavController(for: PostsListViewController(), title: "Chats", image: UIImage(named: "chatsIcon")!),
+            createNavController(for: UserProfileViewController(), title: "Chats", image: UIImage(named: "chatsIcon")!),
                 
             createNavController(for: PostsListViewController(), title: "Friends", image: UIImage(named: "friendsIcon")!),
                 
