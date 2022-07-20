@@ -76,6 +76,13 @@ extension PostsListViewController: UITableViewDelegate, UITableViewDataSource {
         let post = viewModel.posts[indexPath.row]
         cell.setData(post: post)
         
+        cell.likeButton.addTarget(self, action: #selector(likePost(sender:)), for: .touchUpInside)
+        cell.likeButton.tag = indexPath.row
+        cell.dislikeButton.addTarget(self, action: #selector(dislikePost(sender:)), for: .touchUpInside)
+        cell.dislikeButton.tag = indexPath.row
+        cell.commentButton.addTarget(self, action: #selector(commentPost(sender:)), for: .touchUpInside)
+        cell.commentButton.tag = indexPath.row
+        
         return cell
     }
     
@@ -86,6 +93,28 @@ extension PostsListViewController: UITableViewDelegate, UITableViewDataSource {
         let vc = PostDetailViewController()
         show(vc, sender: nil)
     }
+    
+    @objc func likePost(sender: UIButton) {
+        let buttonTag = sender.tag
+        let post = viewModel.posts[buttonTag]
+        viewModel.addPostReaction(post: post, typeReaction: TypeReactions.like)
+    }
+    
+    @objc func dislikePost(sender: UIButton) {
+        let buttonTag = sender.tag
+        let post = viewModel.posts[buttonTag]
+        viewModel.addPostReaction(post: post, typeReaction: TypeReactions.dislike)
+    }
+    
+    @objc func commentPost(sender: UIButton) {
+        let buttonTag = sender.tag
+        let post = viewModel.posts[buttonTag]
+        viewModel.addPostForDetail(post: post)
+        
+        let vc = PostDetailViewController()
+        show(vc, sender: nil)
+    }
+    
 }
 
 extension PostsListViewController: UISearchBarDelegate {
@@ -105,6 +134,10 @@ extension PostsListViewController: UISearchBarDelegate {
 }
 
 extension PostsListViewController: NewEditPostDelegate {
+    func postAdded(post: Post) {
+        self.postsTableView.reloadData()
+    }
+    
     func postEdited(post: Post) {
         if let index = viewModel.posts.firstIndex(where: { post.id == $0.id }) {
             let indexPath = IndexPath(row: index, section: 0)

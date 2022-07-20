@@ -54,6 +54,10 @@
 		8471C89E286C98EC005E069A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8471C89D286C98EC005E069A /* FirebaseMessaging */; };
 		8471C8A0286C98EC005E069A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8471C89F286C98EC005E069A /* FirebaseStorage */; };
 		8471C8A5286C9B23005E069A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471C8A4286C9B23005E069A /* User.swift */; };
+		849717002887914C009BDEBD /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849716FF2887914C009BDEBD /* Reaction.swift */; };
+		849717022887B2D8009BDEBD /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849717012887B2D8009BDEBD /* Comment.swift */; };
+		849717052887B596009BDEBD /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849717032887B596009BDEBD /* CommentTableViewCell.swift */; };
+		849717062887B596009BDEBD /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849717042887B596009BDEBD /* CommentTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +124,10 @@
 		8471C887286C9810005E069A /* social_network_appUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = social_network_appUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		8471C894286C9875005E069A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8471C8A4286C9B23005E069A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		849716FF2887914C009BDEBD /* Reaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reaction.swift; sourceTree = "<group>"; };
+		849717012887B2D8009BDEBD /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
+		849717032887B596009BDEBD /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
+		849717042887B596009BDEBD /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -286,6 +294,8 @@
 				8471C8A4286C9B23005E069A /* User.swift */,
 				845DBFC1287628CD003FB5D0 /* BaseModel.swift */,
 				845DC01F28811D0A003FB5D0 /* Post.swift */,
+				849716FF2887914C009BDEBD /* Reaction.swift */,
+				849717012887B2D8009BDEBD /* Comment.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -411,6 +421,8 @@
 			children = (
 				845DC02428812370003FB5D0 /* PostTableViewCell.swift */,
 				845DC02528812370003FB5D0 /* PostTableViewCell.xib */,
+				849717032887B596009BDEBD /* CommentTableViewCell.swift */,
+				849717042887B596009BDEBD /* CommentTableViewCell.xib */,
 			);
 			path = cells;
 			sourceTree = "<group>";
@@ -621,6 +633,7 @@
 				845DBFF428764864003FB5D0 /* PostsListViewController.xib in Resources */,
 				8471C895286C9875005E069A /* GoogleService-Info.plist in Resources */,
 				845DC01E28811708003FB5D0 /* NewPostViewController.xib in Resources */,
+				849717062887B596009BDEBD /* CommentTableViewCell.xib in Resources */,
 				8471C86E286C980F005E069A /* Assets.xcassets in Resources */,
 				845DC0012876756F003FB5D0 /* UserProfileViewController.xib in Resources */,
 				845DBFDB28763C77003FB5D0 /* SignUpViewController.xib in Resources */,
@@ -658,6 +671,7 @@
 				845DBFDD28763F1D003FB5D0 /* SignUpViewModel.swift in Sources */,
 				8471C866286C980E005E069A /* ViewController.swift in Sources */,
 				845DBFD428763890003FB5D0 /* LoginViewModel.swift in Sources */,
+				849717002887914C009BDEBD /* Reaction.swift in Sources */,
 				845DBFC2287628CD003FB5D0 /* BaseModel.swift in Sources */,
 				845DC01D28811708003FB5D0 /* NewPostViewController.swift in Sources */,
 				8471C862286C980E005E069A /* AppDelegate.swift in Sources */,
@@ -669,10 +683,12 @@
 				845DC02628812370003FB5D0 /* PostTableViewCell.swift in Sources */,
 				8471C8A5286C9B23005E069A /* User.swift in Sources */,
 				8471C86C286C980E005E069A /* social_network_app.xcdatamodeld in Sources */,
+				849717052887B596009BDEBD /* CommentTableViewCell.swift in Sources */,
 				845DBFD0287635BB003FB5D0 /* LoginViewController.swift in Sources */,
 				845DBFEA287643FF003FB5D0 /* UsersLocal+CoreDataClass.swift in Sources */,
 				845DBFC828763365003FB5D0 /* AuthFirebaseManager.swift in Sources */,
 				845DBFE128764138003FB5D0 /* CoreDataManager.swift in Sources */,
+				849717022887B2D8009BDEBD /* Comment.swift in Sources */,
 				845DC02228811E2A003FB5D0 /* PostsViewModel.swift in Sources */,
 				845DC003287679D0003FB5D0 /* UserProfileViewModel.swift in Sources */,
 				845DBFC628762C62003FB5D0 /* Buttons.swift in Sources */,

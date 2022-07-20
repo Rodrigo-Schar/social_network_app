@@ -57,7 +57,7 @@ class UserProfileViewModel {
     }
     
     func loadMyPosts(ownerId: String) {
-        firebaseManager.getDocumentsByParameter(type: Post.self, forCollection: .posts, field: "ownerId", parameter: ownerId) { result in
+        firebaseManager.listenCollectionChangesByParameter(type: Post.self, collection: .posts, field: "ownerId", parameter: ownerId) { result in
             switch result {
                 case .success(let posts):
                     self.myPosts = posts

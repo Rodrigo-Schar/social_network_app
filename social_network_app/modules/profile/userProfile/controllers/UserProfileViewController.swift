@@ -117,6 +117,13 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
         let post = viewModel.myPosts[indexPath.row]
         cell.setData(post: post)
         
+        cell.likeButton.addTarget(self, action: #selector(likePost(sender:)), for: .touchUpInside)
+        cell.likeButton.tag = indexPath.row
+        cell.dislikeButton.addTarget(self, action: #selector(dislikePost(sender:)), for: .touchUpInside)
+        cell.dislikeButton.tag = indexPath.row
+        cell.commentButton.addTarget(self, action: #selector(commentPost(sender:)), for: .touchUpInside)
+        cell.commentButton.tag = indexPath.row
+        
         return cell
     }
     
@@ -129,9 +136,34 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
         vc.delegate = self
         show(vc, sender: nil)
     }
+    
+    @objc func likePost(sender: UIButton) {
+        let buttonTag = sender.tag
+        let post = viewModel.myPosts[buttonTag]
+        PostsViewModel.shared.addPostReaction(post: post, typeReaction: TypeReactions.like)
+    }
+    
+    @objc func dislikePost(sender: UIButton) {
+        let buttonTag = sender.tag
+        let post = viewModel.myPosts[buttonTag]
+        PostsViewModel.shared.addPostReaction(post: post, typeReaction: TypeReactions.dislike)
+    }
+    
+    @objc func commentPost(sender: UIButton) {
+        let buttonTag = sender.tag
+        let post = viewModel.myPosts[buttonTag]
+        PostsViewModel.shared.addPostForDetail(post: post)
+        
+        let vc = PostDetailViewController()
+        show(vc, sender: nil)
+    }
 }
 
 extension UserProfileViewController: NewEditPostDelegate {
+    func postAdded(post: Post) {
+        self.myPostsTableView.reloadData()
+    }
+    
     func postEdited(post: Post) {
         if let index = viewModel.myPosts.firstIndex(where: { post.id == $0.id }) {
             let indexPath = IndexPath(row: index, section: 0)

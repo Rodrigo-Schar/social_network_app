@@ -8,6 +8,7 @@
 import UIKit
 
 protocol NewEditPostDelegate {
+    func postAdded(post: Post)
     func postEdited(post: Post)
 }
 
@@ -94,8 +95,7 @@ class NewPostViewController: ImagePickerHelperViewController {
         PostsViewModel.shared.addNewPost(title: title, description: descrip, projecUrl: projectUrl, ownerId: userData.id) { result in
             switch result {
                 case .success(let post):
-                    PostsViewModel.shared.posts.append(post)
-                    PostsViewModel.shared.postsOriginalList.append(post)
+                    self.delegate?.postAdded(post: post)
                     self.navigationController?.popViewController(animated: true)
                 case .failure(let error):
                     print(error)
@@ -108,7 +108,7 @@ class NewPostViewController: ImagePickerHelperViewController {
         guard let userData = UserProfileViewModel.shared.user else { return }
         guard let post = UserProfileViewModel.shared.postDetail.first else { return }
         
-        PostsViewModel.shared.editPost(postId: post.id, title: title, description: descrip, projecUrl: projectUrl, ownerId: userData.id) { result in
+        PostsViewModel.shared.editPost(postId: post.id, title: title, description: descrip, projecUrl: projectUrl, likes: post.likes, dislikes: post.dislikes, ownerId: userData.id) { result in
             switch result {
                 case .success(let post):
                     self.delegate?.postEdited(post: post)

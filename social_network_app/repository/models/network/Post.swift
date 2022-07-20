@@ -14,6 +14,7 @@ struct Post: Codable, BaseModel {
     let imageUrl: String
     let projectUrl: String
     let likes: Double
+    let dislikes: Double
     let ownerId: String
     let createdAt: Double
     let updatedAt: Double
