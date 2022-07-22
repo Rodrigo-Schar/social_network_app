@@ -18,6 +18,7 @@ enum FirebaseCollections: String {
     case posts
     case reactions
     case comments
+    case friendRequests
 }
 
 class FirebaseManager {
@@ -105,6 +106,27 @@ class FirebaseManager {
     
     func listenCollectionChangesByParameter<T: Decodable>(type: T.Type, collection: FirebaseCollections, field: String, parameter: String, completion: @escaping ( Result<[T], Error>) -> Void  ) {
         db.collection(collection.rawValue).whereField(field, isEqualTo: parameter).addSnapshotListener { querySnapshot, error in
+            guard error == nil else { return completion(.failure(error!)) }
+            guard let documents = querySnapshot?.documents else { return completion(.success([])) }
+            
+            
+            var items = [T]()
+            let json = JSONDecoder()
+            for document in documents {
+                if let data = try? JSONSerialization.data(withJSONObject: document.data(), options: []),
+                   let item = try? json.decode(type, from: data) {
+                    items.append(item)
+                }
+            }
+            completion(.success(items))
+        }
+    }
+    
+    func listenCollectionChangesBytwoParameter<T: Decodable>(type: T.Type, collection: FirebaseCollections, field1: String, field2: String, parameter1: String, parameter2: String, completion: @escaping ( Result<[T], Error>) -> Void  ) {
+        db.collection(collection.rawValue)
+            .whereField(field1, isEqualTo: parameter1)
+            .whereField(field2, isEqualTo: parameter2)
+            .addSnapshotListener { querySnapshot, error in
             guard error == nil else { return completion(.failure(error!)) }
             guard let documents = querySnapshot?.documents else { return completion(.success([])) }
             

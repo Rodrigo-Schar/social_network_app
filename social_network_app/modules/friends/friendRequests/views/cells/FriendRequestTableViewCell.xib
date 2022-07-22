@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FriendRequestCell" id="KGk-i7-Jjw" customClass="FriendRequestTableViewCell" customModule="social_network_app" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uig-b7-Qak">
+                        <rect key="frame" x="5" y="5" width="55" height="50"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="50" id="7Ll-js-qGS"/>
+                            <constraint firstAttribute="width" constant="55" id="a8v-kc-DaQ"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLf-nH-3lw">
+                        <rect key="frame" x="65" y="5" width="250" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="AOv-k3-b6o"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <color key="textColor" name="black-color"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oX8-ze-vFE" customClass="PrimaryButton" customModule="social_network_app" customModuleProvider="target">
+                        <rect key="frame" x="65" y="25" width="110" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="110" id="fra-yG-wN0"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Confirm"/>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yv-z0-JQk" customClass="SecondaryButton" customModule="social_network_app" customModuleProvider="target">
+                        <rect key="frame" x="185" y="25" width="110" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="110" id="1of-Tm-na4"/>
+                        </constraints>
+                        <state key="normal" title="Button"/>
+                        <buttonConfiguration key="configuration" style="plain" title="Decline"/>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="0yv-z0-JQk" secondAttribute="bottom" constant="5" id="1Pi-G6-nwW"/>
+                    <constraint firstItem="uig-b7-Qak" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="47e-B8-tKS"/>
+                    <constraint firstItem="oX8-ze-vFE" firstAttribute="leading" secondItem="uig-b7-Qak" secondAttribute="trailing" constant="5" id="8EU-6Y-UBh"/>
+                    <constraint firstItem="0yv-z0-JQk" firstAttribute="top" secondItem="VLf-nH-3lw" secondAttribute="bottom" constant="5" id="N3R-nV-ww9"/>
+                    <constraint firstItem="0yv-z0-JQk" firstAttribute="leading" secondItem="oX8-ze-vFE" secondAttribute="trailing" constant="10" id="Vxy-30-Q2O"/>
+                    <constraint firstAttribute="bottom" secondItem="uig-b7-Qak" secondAttribute="bottom" constant="5" id="YdL-9U-ziD"/>
+                    <constraint firstItem="VLf-nH-3lw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="fhw-M1-TAf"/>
+                    <constraint firstItem="VLf-nH-3lw" firstAttribute="leading" secondItem="uig-b7-Qak" secondAttribute="trailing" constant="5" id="fnb-OH-ZaG"/>
+                    <constraint firstItem="oX8-ze-vFE" firstAttribute="top" secondItem="VLf-nH-3lw" secondAttribute="bottom" constant="5" id="hVY-VC-92I"/>
+                    <constraint firstItem="uig-b7-Qak" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="kcJ-fM-j57"/>
+                    <constraint firstAttribute="bottom" secondItem="oX8-ze-vFE" secondAttribute="bottom" constant="5" id="wwh-8q-VuW"/>
+                    <constraint firstAttribute="trailing" secondItem="VLf-nH-3lw" secondAttribute="trailing" constant="5" id="yut-nW-RB7"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="confirmButton" destination="oX8-ze-vFE" id="Uym-ae-ALn"/>
+                <outlet property="declineButton" destination="0yv-z0-JQk" id="1GD-m0-3ug"/>
+                <outlet property="nameLabel" destination="VLf-nH-3lw" id="4FF-F6-uez"/>
+                <outlet property="userImageView" destination="uig-b7-Qak" id="wZ4-f1-Byc"/>
+            </connections>
+            <point key="canvasLocation" x="132" y="69"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <namedColor name="black-color">
+            <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>
