@@ -55,8 +55,8 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
         
         cell.chatButton.addTarget(self, action: #selector(messageFriend(sender:)), for: .touchUpInside)
         cell.chatButton.tag = indexPath.row
-        cell.chatButton.addTarget(self, action: #selector(deleteFriend(sender:)), for: .touchUpInside)
-        cell.chatButton.tag = indexPath.row
+        cell.deleteFriendButton.addTarget(self, action: #selector(deleteFriend(sender:)), for: .touchUpInside)
+        cell.deleteFriendButton.tag = indexPath.row
         
         return cell
     }
@@ -64,6 +64,14 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     @objc func messageFriend(sender: UIButton) {
         let buttonTag = sender.tag
         let request = viewModel.friends[buttonTag]
+        
+        viewModel.getUserFriend(userId: request.userSenderId) {
+            if let user = self.viewModel.users.first {
+                SendMessageViewModel.shared.userReceiver = user
+                let vc = SendMessageViewController()
+                self.show(vc, sender: nil)
+            }
+        }
         
     }
     
