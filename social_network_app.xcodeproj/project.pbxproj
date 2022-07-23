@@ -58,6 +58,24 @@
 		849717022887B2D8009BDEBD /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849717012887B2D8009BDEBD /* Comment.swift */; };
 		849717052887B596009BDEBD /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849717032887B596009BDEBD /* CommentTableViewCell.swift */; };
 		849717062887B596009BDEBD /* CommentTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 849717042887B596009BDEBD /* CommentTableViewCell.xib */; };
+		8497171C288A10BD009BDEBD /* FriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497171A288A10BD009BDEBD /* FriendsViewController.swift */; };
+		8497171D288A10BD009BDEBD /* FriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8497171B288A10BD009BDEBD /* FriendsViewController.xib */; };
+		84971720288A115E009BDEBD /* FriendsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497171E288A115E009BDEBD /* FriendsListViewController.swift */; };
+		84971721288A115E009BDEBD /* FriendsListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8497171F288A115E009BDEBD /* FriendsListViewController.xib */; };
+		84971724288A11B3009BDEBD /* AddFriendsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84971722288A11B3009BDEBD /* AddFriendsViewController.swift */; };
+		84971725288A11B3009BDEBD /* AddFriendsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84971723288A11B3009BDEBD /* AddFriendsViewController.xib */; };
+		8497172C288A16AE009BDEBD /* FriendRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497172A288A16AE009BDEBD /* FriendRequestsViewController.swift */; };
+		8497172D288A16AE009BDEBD /* FriendRequestsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8497172B288A16AE009BDEBD /* FriendRequestsViewController.xib */; };
+		84971730288A1897009BDEBD /* FriendRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497172F288A1897009BDEBD /* FriendRequest.swift */; };
+		84971732288A1BBB009BDEBD /* AddFriendsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84971731288A1BBB009BDEBD /* AddFriendsViewModel.swift */; };
+		84971736288A1FD9009BDEBD /* AddFriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84971734288A1FD9009BDEBD /* AddFriendTableViewCell.swift */; };
+		84971737288A1FD9009BDEBD /* AddFriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84971735288A1FD9009BDEBD /* AddFriendTableViewCell.xib */; };
+		84971739288A4679009BDEBD /* FriendRequestsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84971738288A4679009BDEBD /* FriendRequestsViewModel.swift */; };
+		8497173D288A4788009BDEBD /* FriendRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8497173B288A4788009BDEBD /* FriendRequestTableViewCell.swift */; };
+		8497173E288A4788009BDEBD /* FriendRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8497173C288A4788009BDEBD /* FriendRequestTableViewCell.xib */; };
+		84971744288A5F7B009BDEBD /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84971742288A5F7B009BDEBD /* FriendTableViewCell.swift */; };
+		84971745288A5F7B009BDEBD /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84971743288A5F7B009BDEBD /* FriendTableViewCell.xib */; };
+		84971747288A6375009BDEBD /* FriendsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84971746288A6375009BDEBD /* FriendsListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +146,24 @@
 		849717012887B2D8009BDEBD /* Comment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comment.swift; sourceTree = "<group>"; };
 		849717032887B596009BDEBD /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		849717042887B596009BDEBD /* CommentTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CommentTableViewCell.xib; sourceTree = "<group>"; };
+		8497171A288A10BD009BDEBD /* FriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsViewController.swift; sourceTree = "<group>"; };
+		8497171B288A10BD009BDEBD /* FriendsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsViewController.xib; sourceTree = "<group>"; };
+		8497171E288A115E009BDEBD /* FriendsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewController.swift; sourceTree = "<group>"; };
+		8497171F288A115E009BDEBD /* FriendsListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendsListViewController.xib; sourceTree = "<group>"; };
+		84971722288A11B3009BDEBD /* AddFriendsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsViewController.swift; sourceTree = "<group>"; };
+		84971723288A11B3009BDEBD /* AddFriendsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFriendsViewController.xib; sourceTree = "<group>"; };
+		8497172A288A16AE009BDEBD /* FriendRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsViewController.swift; sourceTree = "<group>"; };
+		8497172B288A16AE009BDEBD /* FriendRequestsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendRequestsViewController.xib; sourceTree = "<group>"; };
+		8497172F288A1897009BDEBD /* FriendRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequest.swift; sourceTree = "<group>"; };
+		84971731288A1BBB009BDEBD /* AddFriendsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendsViewModel.swift; sourceTree = "<group>"; };
+		84971734288A1FD9009BDEBD /* AddFriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendTableViewCell.swift; sourceTree = "<group>"; };
+		84971735288A1FD9009BDEBD /* AddFriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddFriendTableViewCell.xib; sourceTree = "<group>"; };
+		84971738288A4679009BDEBD /* FriendRequestsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestsViewModel.swift; sourceTree = "<group>"; };
+		8497173B288A4788009BDEBD /* FriendRequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendRequestTableViewCell.swift; sourceTree = "<group>"; };
+		8497173C288A4788009BDEBD /* FriendRequestTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendRequestTableViewCell.xib; sourceTree = "<group>"; };
+		84971742288A5F7B009BDEBD /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		84971743288A5F7B009BDEBD /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
+		84971746288A6375009BDEBD /* FriendsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -296,6 +332,7 @@
 				845DC01F28811D0A003FB5D0 /* Post.swift */,
 				849716FF2887914C009BDEBD /* Reaction.swift */,
 				849717012887B2D8009BDEBD /* Comment.swift */,
+				8497172F288A1897009BDEBD /* FriendRequest.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -486,6 +523,7 @@
 		8471C8A1286C9ADC005E069A /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				84971710288A0F30009BDEBD /* friends */,
 				845DBFF928767457003FB5D0 /* profile */,
 				845DBFEC28764808003FB5D0 /* posts */,
 				845DBFC92876351E003FB5D0 /* auth */,
@@ -510,6 +548,150 @@
 				845DBFE6287643A6003FB5D0 /* network */,
 			);
 			path = models;
+			sourceTree = "<group>";
+		};
+		84971710288A0F30009BDEBD /* friends */ = {
+			isa = PBXGroup;
+			children = (
+				84971726288A1670009BDEBD /* friendRequests */,
+				84971716288A107F009BDEBD /* friendsList */,
+				84971711288A0F43009BDEBD /* addFriends */,
+			);
+			path = friends;
+			sourceTree = "<group>";
+		};
+		84971711288A0F43009BDEBD /* addFriends */ = {
+			isa = PBXGroup;
+			children = (
+				84971715288A0F88009BDEBD /* controllers */,
+				84971714288A0F7B009BDEBD /* views */,
+				84971712288A0F63009BDEBD /* viewModels */,
+			);
+			path = addFriends;
+			sourceTree = "<group>";
+		};
+		84971712288A0F63009BDEBD /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+				84971731288A1BBB009BDEBD /* AddFriendsViewModel.swift */,
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		84971714288A0F7B009BDEBD /* views */ = {
+			isa = PBXGroup;
+			children = (
+				84971733288A1FB5009BDEBD /* cells */,
+				84971723288A11B3009BDEBD /* AddFriendsViewController.xib */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		84971715288A0F88009BDEBD /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84971722288A11B3009BDEBD /* AddFriendsViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		84971716288A107F009BDEBD /* friendsList */ = {
+			isa = PBXGroup;
+			children = (
+				84971719288A109D009BDEBD /* viewModels */,
+				84971718288A1094009BDEBD /* views */,
+				84971717288A108A009BDEBD /* controllers */,
+			);
+			path = friendsList;
+			sourceTree = "<group>";
+		};
+		84971717288A108A009BDEBD /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8497171A288A10BD009BDEBD /* FriendsViewController.swift */,
+				8497171E288A115E009BDEBD /* FriendsListViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		84971718288A1094009BDEBD /* views */ = {
+			isa = PBXGroup;
+			children = (
+				84971741288A5F63009BDEBD /* cells */,
+				8497171B288A10BD009BDEBD /* FriendsViewController.xib */,
+				8497171F288A115E009BDEBD /* FriendsListViewController.xib */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		84971719288A109D009BDEBD /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+				84971746288A6375009BDEBD /* FriendsListViewModel.swift */,
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		84971726288A1670009BDEBD /* friendRequests */ = {
+			isa = PBXGroup;
+			children = (
+				84971729288A168D009BDEBD /* controllers */,
+				84971728288A1686009BDEBD /* views */,
+				84971727288A167E009BDEBD /* viewModels */,
+			);
+			path = friendRequests;
+			sourceTree = "<group>";
+		};
+		84971727288A167E009BDEBD /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+				84971738288A4679009BDEBD /* FriendRequestsViewModel.swift */,
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		84971728288A1686009BDEBD /* views */ = {
+			isa = PBXGroup;
+			children = (
+				8497173A288A4767009BDEBD /* cells */,
+				8497172B288A16AE009BDEBD /* FriendRequestsViewController.xib */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		84971729288A168D009BDEBD /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				8497172A288A16AE009BDEBD /* FriendRequestsViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		84971733288A1FB5009BDEBD /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				84971734288A1FD9009BDEBD /* AddFriendTableViewCell.swift */,
+				84971735288A1FD9009BDEBD /* AddFriendTableViewCell.xib */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		8497173A288A4767009BDEBD /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				8497173B288A4788009BDEBD /* FriendRequestTableViewCell.swift */,
+				8497173C288A4788009BDEBD /* FriendRequestTableViewCell.xib */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		84971741288A5F63009BDEBD /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				84971742288A5F7B009BDEBD /* FriendTableViewCell.swift */,
+				84971743288A5F7B009BDEBD /* FriendTableViewCell.xib */,
+			);
+			path = cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -626,18 +808,25 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84971737288A1FD9009BDEBD /* AddFriendTableViewCell.xib in Resources */,
 				845DC02B288607EE003FB5D0 /* PostDetailViewController.xib in Resources */,
 				8471C871286C980F005E069A /* LaunchScreen.storyboard in Resources */,
+				8497171D288A10BD009BDEBD /* FriendsViewController.xib in Resources */,
+				84971745288A5F7B009BDEBD /* FriendTableViewCell.xib in Resources */,
 				845DC02728812370003FB5D0 /* PostTableViewCell.xib in Resources */,
 				845DBFD1287635BB003FB5D0 /* LoginViewController.xib in Resources */,
 				845DBFF428764864003FB5D0 /* PostsListViewController.xib in Resources */,
+				84971721288A115E009BDEBD /* FriendsListViewController.xib in Resources */,
 				8471C895286C9875005E069A /* GoogleService-Info.plist in Resources */,
+				8497172D288A16AE009BDEBD /* FriendRequestsViewController.xib in Resources */,
 				845DC01E28811708003FB5D0 /* NewPostViewController.xib in Resources */,
+				84971725288A11B3009BDEBD /* AddFriendsViewController.xib in Resources */,
 				849717062887B596009BDEBD /* CommentTableViewCell.xib in Resources */,
 				8471C86E286C980F005E069A /* Assets.xcassets in Resources */,
 				845DC0012876756F003FB5D0 /* UserProfileViewController.xib in Resources */,
 				845DBFDB28763C77003FB5D0 /* SignUpViewController.xib in Resources */,
 				8471C869286C980E005E069A /* Main.storyboard in Resources */,
+				8497173E288A4788009BDEBD /* FriendRequestTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -662,30 +851,41 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8497171C288A10BD009BDEBD /* FriendsViewController.swift in Sources */,
+				8497172C288A16AE009BDEBD /* FriendRequestsViewController.swift in Sources */,
 				845DC00C287E3D28003FB5D0 /* DeviceImageLibraryViewController.swift in Sources */,
 				845DC00A287E3CB0003FB5D0 /* ImagePickerHelperViewController.swift in Sources */,
 				845DBFC028762621003FB5D0 /* FirebaseManager.swift in Sources */,
+				84971736288A1FD9009BDEBD /* AddFriendTableViewCell.swift in Sources */,
 				845DC02028811D0A003FB5D0 /* Post.swift in Sources */,
 				845DBFF828764DFC003FB5D0 /* EncodableExtension.swift in Sources */,
 				845DC0002876756F003FB5D0 /* UserProfileViewController.swift in Sources */,
 				845DBFDD28763F1D003FB5D0 /* SignUpViewModel.swift in Sources */,
 				8471C866286C980E005E069A /* ViewController.swift in Sources */,
+				8497173D288A4788009BDEBD /* FriendRequestTableViewCell.swift in Sources */,
 				845DBFD428763890003FB5D0 /* LoginViewModel.swift in Sources */,
+				84971724288A11B3009BDEBD /* AddFriendsViewController.swift in Sources */,
 				849717002887914C009BDEBD /* Reaction.swift in Sources */,
 				845DBFC2287628CD003FB5D0 /* BaseModel.swift in Sources */,
 				845DC01D28811708003FB5D0 /* NewPostViewController.swift in Sources */,
 				8471C862286C980E005E069A /* AppDelegate.swift in Sources */,
 				845DBFEB287643FF003FB5D0 /* UsersLocal+CoreDataProperties.swift in Sources */,
 				845DC02D28863561003FB5D0 /* ConstantVariables.swift in Sources */,
+				84971732288A1BBB009BDEBD /* AddFriendsViewModel.swift in Sources */,
 				845DC02A288607EE003FB5D0 /* PostDetailViewController.swift in Sources */,
 				8471C864286C980E005E069A /* SceneDelegate.swift in Sources */,
 				845DBFDA28763C77003FB5D0 /* SignUpViewController.swift in Sources */,
 				845DC02628812370003FB5D0 /* PostTableViewCell.swift in Sources */,
+				84971739288A4679009BDEBD /* FriendRequestsViewModel.swift in Sources */,
+				84971744288A5F7B009BDEBD /* FriendTableViewCell.swift in Sources */,
 				8471C8A5286C9B23005E069A /* User.swift in Sources */,
+				84971730288A1897009BDEBD /* FriendRequest.swift in Sources */,
 				8471C86C286C980E005E069A /* social_network_app.xcdatamodeld in Sources */,
 				849717052887B596009BDEBD /* CommentTableViewCell.swift in Sources */,
 				845DBFD0287635BB003FB5D0 /* LoginViewController.swift in Sources */,
 				845DBFEA287643FF003FB5D0 /* UsersLocal+CoreDataClass.swift in Sources */,
+				84971720288A115E009BDEBD /* FriendsListViewController.swift in Sources */,
+				84971747288A6375009BDEBD /* FriendsListViewModel.swift in Sources */,
 				845DBFC828763365003FB5D0 /* AuthFirebaseManager.swift in Sources */,
 				845DBFE128764138003FB5D0 /* CoreDataManager.swift in Sources */,
 				849717022887B2D8009BDEBD /* Comment.swift in Sources */,
