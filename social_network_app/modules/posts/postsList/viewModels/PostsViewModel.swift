@@ -25,12 +25,13 @@ class PostsViewModel {
     var dataImage = Data()
     var comments = [Comment]()
     
-    func loadPosts() {
+    func loadPosts(completion: ( () -> Void )?) {
         firebaseManager.listenCollectionChanges(type: Post.self, collection: .posts) { result in
             switch result {
             case .success(let posts):
                 self.postsOriginalList = posts
                 self.posts = posts
+                completion?()
             case .failure(let error):
                 print(error)
             }

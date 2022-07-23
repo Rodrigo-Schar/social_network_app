@@ -27,12 +27,14 @@ class FriendsListViewController: UIViewController {
         self.friendsTableView.dataSource = self
         self.friendsSearchBar.delegate = self
         
-        let uiNib = UINib(nibName: "FriendRequestTableViewCell", bundle: nil)
-        self.friendsTableView.register(uiNib, forCellReuseIdentifier: "FriendRequestCell")
+        let uiNib = UINib(nibName: "FriendTableViewCell", bundle: nil)
+        self.friendsTableView.register(uiNib, forCellReuseIdentifier: "FriendCell")
     }
     
     func getFriends() {
-        viewModel.loadFriends()
+        viewModel.loadFriends() {
+            self.friendsTableView.reloadData()
+        }
     }
 }
 
@@ -42,7 +44,7 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = friendsTableView.dequeueReusableCell(withIdentifier: "FriendRequestCell") as? FriendRequestTableViewCell ?? FriendRequestTableViewCell()
+        let cell = friendsTableView.dequeueReusableCell(withIdentifier: "FriendCell") as? FriendTableViewCell ?? FriendTableViewCell()
         let request = viewModel.friends[indexPath.row]
         
         viewModel.getUserFriend(userId: request.userSenderId) {
@@ -51,10 +53,10 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
             }
         }
         
-        cell.confirmButton.addTarget(self, action: #selector(messageFriend(sender:)), for: .touchUpInside)
-        cell.confirmButton.tag = indexPath.row
-        cell.declineButton.addTarget(self, action: #selector(deleteFriend(sender:)), for: .touchUpInside)
-        cell.declineButton.tag = indexPath.row
+        cell.chatButton.addTarget(self, action: #selector(messageFriend(sender:)), for: .touchUpInside)
+        cell.chatButton.tag = indexPath.row
+        cell.chatButton.addTarget(self, action: #selector(deleteFriend(sender:)), for: .touchUpInside)
+        cell.chatButton.tag = indexPath.row
         
         return cell
     }

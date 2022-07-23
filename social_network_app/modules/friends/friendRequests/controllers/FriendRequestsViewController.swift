@@ -30,7 +30,9 @@ class FriendRequestsViewController: UIViewController {
     }
     
     func getFriendRequests() {
-        viewModel.loadFriendsRequests()
+        viewModel.loadFriendsRequests() {
+            self.friendRequestsTableView.reloadData()
+        }
     }
 }
 

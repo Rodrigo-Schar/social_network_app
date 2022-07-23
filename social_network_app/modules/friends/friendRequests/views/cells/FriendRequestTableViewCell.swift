@@ -25,6 +25,20 @@ class FriendRequestTableViewCell: UITableViewCell {
     
     func setData(user: User) {
         nameLabel.text = user.name
+        loadUserImage(user: user)
+    }
+    
+    func loadUserImage(user: User) {
+        UserProfileViewModel.shared.loadProfilePicture(user: user)  { result in
+            switch result {
+                case .success(let data):
+                    DispatchQueue.main.async {
+                        self.userImageView.image = UIImage(data: data)
+                    }
+                case .failure(let error):
+                    print(error)
+            }
+        }
     }
     
 }

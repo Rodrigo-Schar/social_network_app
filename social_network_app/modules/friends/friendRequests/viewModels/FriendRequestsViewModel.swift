@@ -16,12 +16,13 @@ class FriendRequestsViewModel {
     var friendRequests = [FriendRequest]()
     var users = [User]()
     
-    func loadFriendsRequests() {
+    func loadFriendsRequests(completion: ( () -> Void )? ) {
         if let userData = UserProfileViewModel.shared.user {
             firebaseManager.listenCollectionChangesBytwoParameter(type: FriendRequest.self, collection: .friendRequests, field1: "userReceiverId", field2: "state", parameter1: userData.id, parameter2: ConstantVariables.FriendRequestState.pending.rawValue) { result in
                 switch result {
                     case .success(let requests):
                         self.friendRequests = requests
+                        completion?()
                     case .failure(let error):
                         print(error)
                 }

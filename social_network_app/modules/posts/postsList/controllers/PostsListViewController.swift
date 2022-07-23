@@ -26,16 +26,18 @@ class PostsListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.postsTableView.reloadData()
+        //self.postsTableView.reloadData()
     }
     
     func getPosts() {
-        viewModel.loadPosts()
-        viewModel.reloadData = { [weak self] in
-            DispatchQueue.main.async {
-                self?.postsTableView.reloadData()
-            }
+        viewModel.loadPosts() {
+            self.postsTableView.reloadData()
         }
+        //viewModel.reloadData = { [weak self] in
+        //    DispatchQueue.main.async {
+        //        self?.postsTableView.reloadData()
+        //    }
+        //}
     }
     
     func setupView() {
