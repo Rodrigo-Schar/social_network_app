@@ -10,6 +10,7 @@ import UIKit
 class SenderTableViewCell: UITableViewCell {
     @IBOutlet weak var messageView: UIView!
     @IBOutlet weak var messageLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,6 +23,9 @@ class SenderTableViewCell: UITableViewCell {
     func setData(message: Message){
         self.messageView.layer.cornerRadius = 10
         self.messageLabel.text = message.content
+        
+        let time = DateHelper.doubleToDate(double: message.createdAt)
+        self.timeLabel.text = DateHelper.getHourMinute(date: time)
     }
     
 }

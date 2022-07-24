@@ -17,16 +17,7 @@ class ChatListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         loadChats()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        viewModel.chats.removeAll()
     }
     
     func setupView() {
@@ -41,7 +32,6 @@ class ChatListViewController: UIViewController {
         guard let userData = UserProfileViewModel.shared.user else { return }
         viewModel.getChatIdBySender(senderId: userData.id) {
             self.chatTableView.reloadData()
-            print(self.viewModel.chats.count)
         }
     }
 }

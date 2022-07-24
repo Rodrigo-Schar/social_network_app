@@ -19,9 +19,7 @@ class ChatListViewModel {
         firebaseManager.listenCollectionChangesByParameter(type: Chat.self, collection: .chats, field: "participant1Id", parameter: senderId) { result in
             switch result {
                 case .success(let chats):
-                    for chat in chats {
-                        self.chats.append(chat)
-                    }
+                    self.chats = chats
                     self.getChatIdByReceiver(receiverId: senderId) {result in
                         switch result {
                             case .success(let chats):

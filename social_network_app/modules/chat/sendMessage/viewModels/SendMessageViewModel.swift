@@ -68,7 +68,7 @@ class SendMessageViewModel {
     
     func createChat(senderId: String, receiverId: String, completion: @escaping ( Result<Chat, Error>) -> Void) {
         let chatId = firebaseManager.getDocID(forCollection: .chats)
-        let chat = Chat(id: chatId, participant1Id: senderId, participant2Id: receiverId, createdAt: 1.0, updatedAt: 1.0)
+        let chat = Chat(id: chatId, participant1Id: senderId, participant2Id: receiverId, createdAt: DateHelper.dateToDouble(date: Date()), updatedAt: DateHelper.dateToDouble(date: Date()))
         firebaseManager.addDocument(document: chat, collection: .chats) { result in
             switch result {
                 case .success(let chat):
@@ -84,6 +84,7 @@ class SendMessageViewModel {
             switch result {
                 case .success(let messages):
                     self.messages = messages
+                    self.messages = self.messages.sorted{ $0.createdAt < $1.createdAt }
                     completion?()
                 case .failure(let error):
                     print(error)
@@ -93,12 +94,11 @@ class SendMessageViewModel {
     
     func sendMessage(chatId: String, message: String, senderId: String, completion: ( () -> Void )? ) {
         let messageId = firebaseManager.getDocID(forCollection: .messages)
-        let message = Message(id: messageId, content: message, chatId: chatId, userSenderId: senderId, createdAt: 1.0, updatedAt: 1.0)
+        let message = Message(id: messageId, content: message, chatId: chatId, userSenderId: senderId, createdAt: DateHelper.dateToDouble(date: Date()), updatedAt: DateHelper.dateToDouble(date: Date()))
         
         firebaseManager.addDocument(document: message, collection: .messages) { result in
             switch result {
                 case .success(let message):
-                    self.messages.append(message)
                     completion?()
                 case .failure(let error):
                     print(error)

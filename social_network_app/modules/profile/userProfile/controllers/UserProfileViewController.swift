@@ -30,10 +30,6 @@ class UserProfileViewController: ImagePickerHelperViewController {
         loadProfilePicture()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
     func setupView() {
         pictureContainerView.layer.cornerRadius = 20
         pictureContainerView.layer.borderWidth = 1
@@ -54,14 +50,15 @@ class UserProfileViewController: ImagePickerHelperViewController {
             nameLabel.text = userData.name
             nicknameLabel.text = userData.nickname
             emailLabel.text = userData.email
-            viewModel.loadMyPosts(ownerId: userData.id)
+            viewModel.loadMyPosts(ownerId: userData.id) {
+                self.myPostsTableView.reloadData()
+            }
         }
     }
     
     func loadProfilePicture() {
         if let user = viewModel.user, !user.imageUrl.isEmpty {
             viewModel.loadProfilePicture(user: user) { result in
-                
                 switch result {
                     case .success(let data):
                         self.profileImageView.image = UIImage(data: data)
@@ -87,6 +84,7 @@ class UserProfileViewController: ImagePickerHelperViewController {
         let confirm = UIAlertAction(title: "Confirm", style: .default, handler: { (action) -> Void in
             guard let email = self.emailLabel.text else { return }
             self.viewModel.setLogOut(email: email)
+            self.setupLogOut()
             let sceneDelegate = SceneDelegate.shared
             sceneDelegate?.setupRootControllerIfNeeded(validUser: false)
         })
@@ -98,6 +96,32 @@ class UserProfileViewController: ImagePickerHelperViewController {
         dialogMessage.addAction(confirm)
         dialogMessage.addAction(cancel)
         self.present(dialogMessage, animated: true, completion: nil)
+    }
+    
+    func setupLogOut() {
+        viewModel.user = nil
+        viewModel.myPosts.removeAll()
+        viewModel.userLogin = nil
+        viewModel.postDetail.removeAll()
+        
+        PostsViewModel.shared.postDetail.removeAll()
+        PostsViewModel.shared.comments.removeAll()
+        PostsViewModel.shared.posts.removeAll()
+        PostsViewModel.shared.postsOriginalList.removeAll()
+        
+        ChatListViewModel.shared.chats.removeAll()
+        ChatListViewModel.shared.users.removeAll()
+        
+        SendMessageViewModel.shared.chats.removeAll()
+        SendMessageViewModel.shared.messages.removeAll()
+        SendMessageViewModel.shared.userReceiver = nil
+        
+        FriendsListViewModel.shared.users.removeAll()
+        FriendsListViewModel.shared.friends.removeAll()
+        AddFriendsViewModel.shared.usersList.removeAll()
+        FriendRequestsViewModel.shared.users.removeAll()
+        FriendRequestsViewModel.shared.friendRequests.removeAll()
+        
     }
 }
 
