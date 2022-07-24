@@ -56,11 +56,12 @@ class UserProfileViewModel {
         return user
     }
     
-    func loadMyPosts(ownerId: String) {
+    func loadMyPosts(ownerId: String, completion: ( () -> Void )? ) {
         firebaseManager.listenCollectionChangesByParameter(type: Post.self, collection: .posts, field: "ownerId", parameter: ownerId) { result in
             switch result {
                 case .success(let posts):
                     self.myPosts = posts
+                    completion?()
                 case .failure(let error):
                     print(error)
             }

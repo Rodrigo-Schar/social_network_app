@@ -7,6 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		84067BEA288C603800549300 /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84067BE8288C603800549300 /* ChatListViewController.swift */; };
+		84067BEB288C603800549300 /* ChatListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84067BE9288C603800549300 /* ChatListViewController.xib */; };
+		84067BEE288C641000549300 /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84067BED288C641000549300 /* Chat.swift */; };
+		84067BF0288C64E800549300 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84067BEF288C64E800549300 /* Message.swift */; };
+		84067BF7288C661D00549300 /* SendMessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84067BF5288C661D00549300 /* SendMessageViewController.swift */; };
+		84067BF8288C661D00549300 /* SendMessageViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84067BF6288C661D00549300 /* SendMessageViewController.xib */; };
+		84067BFA288C7C1A00549300 /* SendMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84067BF9288C7C1A00549300 /* SendMessageViewModel.swift */; };
+		84067BFE288C90C400549300 /* SenderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84067BFC288C90C400549300 /* SenderTableViewCell.swift */; };
+		84067BFF288C90C400549300 /* SenderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84067BFD288C90C400549300 /* SenderTableViewCell.xib */; };
+		84067C02288C90E600549300 /* ReceiverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84067C00288C90E600549300 /* ReceiverTableViewCell.swift */; };
+		84067C03288C90E600549300 /* ReceiverTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84067C01288C90E600549300 /* ReceiverTableViewCell.xib */; };
+		84067C05288CA42B00549300 /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84067C04288CA42B00549300 /* ChatListViewModel.swift */; };
+		84067C09288CAA4E00549300 /* ChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84067C07288CAA4E00549300 /* ChatTableViewCell.swift */; };
+		84067C0A288CAA4E00549300 /* ChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 84067C08288CAA4E00549300 /* ChatTableViewCell.xib */; };
+		84067C0C288CE73F00549300 /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84067C0B288CE73F00549300 /* DateHelper.swift */; };
 		845DBFC028762621003FB5D0 /* FirebaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DBFBF28762621003FB5D0 /* FirebaseManager.swift */; };
 		845DBFC2287628CD003FB5D0 /* BaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DBFC1287628CD003FB5D0 /* BaseModel.swift */; };
 		845DBFC628762C62003FB5D0 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845DBFC528762C62003FB5D0 /* Buttons.swift */; };
@@ -96,6 +111,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		84067BE8288C603800549300 /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		84067BE9288C603800549300 /* ChatListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatListViewController.xib; sourceTree = "<group>"; };
+		84067BED288C641000549300 /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		84067BEF288C64E800549300 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		84067BF5288C661D00549300 /* SendMessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewController.swift; sourceTree = "<group>"; };
+		84067BF6288C661D00549300 /* SendMessageViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SendMessageViewController.xib; sourceTree = "<group>"; };
+		84067BF9288C7C1A00549300 /* SendMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessageViewModel.swift; sourceTree = "<group>"; };
+		84067BFC288C90C400549300 /* SenderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SenderTableViewCell.swift; sourceTree = "<group>"; };
+		84067BFD288C90C400549300 /* SenderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SenderTableViewCell.xib; sourceTree = "<group>"; };
+		84067C00288C90E600549300 /* ReceiverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReceiverTableViewCell.swift; sourceTree = "<group>"; };
+		84067C01288C90E600549300 /* ReceiverTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReceiverTableViewCell.xib; sourceTree = "<group>"; };
+		84067C04288CA42B00549300 /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
+		84067C07288CAA4E00549300 /* ChatTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatTableViewCell.swift; sourceTree = "<group>"; };
+		84067C08288CAA4E00549300 /* ChatTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChatTableViewCell.xib; sourceTree = "<group>"; };
+		84067C0B288CE73F00549300 /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
 		845DBFBF28762621003FB5D0 /* FirebaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseManager.swift; sourceTree = "<group>"; };
 		845DBFC1287628CD003FB5D0 /* BaseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseModel.swift; sourceTree = "<group>"; };
 		845DBFC528762C62003FB5D0 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
@@ -196,6 +226,105 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		84067BE3288C5F9600549300 /* chat */ = {
+			isa = PBXGroup;
+			children = (
+				84067BF1288C65E000549300 /* sendMessage */,
+				84067BE4288C5FF900549300 /* chatList */,
+			);
+			path = chat;
+			sourceTree = "<group>";
+		};
+		84067BE4288C5FF900549300 /* chatList */ = {
+			isa = PBXGroup;
+			children = (
+				84067BE7288C601300549300 /* viewModels */,
+				84067BE6288C600D00549300 /* views */,
+				84067BE5288C600400549300 /* controllers */,
+			);
+			path = chatList;
+			sourceTree = "<group>";
+		};
+		84067BE5288C600400549300 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84067BE8288C603800549300 /* ChatListViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		84067BE6288C600D00549300 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				84067C06288CAA3A00549300 /* cells */,
+				84067BE9288C603800549300 /* ChatListViewController.xib */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		84067BE7288C601300549300 /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+				84067C04288CA42B00549300 /* ChatListViewModel.swift */,
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		84067BF1288C65E000549300 /* sendMessage */ = {
+			isa = PBXGroup;
+			children = (
+				84067BF4288C65FA00549300 /* viewModels */,
+				84067BF3288C65F300549300 /* views */,
+				84067BF2288C65EC00549300 /* controllers */,
+			);
+			path = sendMessage;
+			sourceTree = "<group>";
+		};
+		84067BF2288C65EC00549300 /* controllers */ = {
+			isa = PBXGroup;
+			children = (
+				84067BF5288C661D00549300 /* SendMessageViewController.swift */,
+			);
+			path = controllers;
+			sourceTree = "<group>";
+		};
+		84067BF3288C65F300549300 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				84067BFB288C909200549300 /* cells */,
+				84067BF6288C661D00549300 /* SendMessageViewController.xib */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		84067BF4288C65FA00549300 /* viewModels */ = {
+			isa = PBXGroup;
+			children = (
+				84067BF9288C7C1A00549300 /* SendMessageViewModel.swift */,
+			);
+			path = viewModels;
+			sourceTree = "<group>";
+		};
+		84067BFB288C909200549300 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				84067BFC288C90C400549300 /* SenderTableViewCell.swift */,
+				84067BFD288C90C400549300 /* SenderTableViewCell.xib */,
+				84067C00288C90E600549300 /* ReceiverTableViewCell.swift */,
+				84067C01288C90E600549300 /* ReceiverTableViewCell.xib */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
+		84067C06288CAA3A00549300 /* cells */ = {
+			isa = PBXGroup;
+			children = (
+				84067C07288CAA4E00549300 /* ChatTableViewCell.swift */,
+				84067C08288CAA4E00549300 /* ChatTableViewCell.xib */,
+			);
+			path = cells;
+			sourceTree = "<group>";
+		};
 		845DBFBD287625A7003FB5D0 /* network */ = {
 			isa = PBXGroup;
 			children = (
@@ -333,6 +462,8 @@
 				849716FF2887914C009BDEBD /* Reaction.swift */,
 				849717012887B2D8009BDEBD /* Comment.swift */,
 				8497172F288A1897009BDEBD /* FriendRequest.swift */,
+				84067BED288C641000549300 /* Chat.swift */,
+				84067BEF288C64E800549300 /* Message.swift */,
 			);
 			path = network;
 			sourceTree = "<group>";
@@ -449,6 +580,7 @@
 				845DC009287E3CB0003FB5D0 /* ImagePickerHelperViewController.swift */,
 				845DC00B287E3D28003FB5D0 /* DeviceImageLibraryViewController.swift */,
 				845DC02C28863561003FB5D0 /* ConstantVariables.swift */,
+				84067C0B288CE73F00549300 /* DateHelper.swift */,
 			);
 			path = helpers;
 			sourceTree = "<group>";
@@ -523,6 +655,7 @@
 		8471C8A1286C9ADC005E069A /* modules */ = {
 			isa = PBXGroup;
 			children = (
+				84067BE3288C5F9600549300 /* chat */,
 				84971710288A0F30009BDEBD /* friends */,
 				845DBFF928767457003FB5D0 /* profile */,
 				845DBFEC28764808003FB5D0 /* posts */,
@@ -809,11 +942,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				84971737288A1FD9009BDEBD /* AddFriendTableViewCell.xib in Resources */,
+				84067C0A288CAA4E00549300 /* ChatTableViewCell.xib in Resources */,
 				845DC02B288607EE003FB5D0 /* PostDetailViewController.xib in Resources */,
+				84067BFF288C90C400549300 /* SenderTableViewCell.xib in Resources */,
 				8471C871286C980F005E069A /* LaunchScreen.storyboard in Resources */,
 				8497171D288A10BD009BDEBD /* FriendsViewController.xib in Resources */,
 				84971745288A5F7B009BDEBD /* FriendTableViewCell.xib in Resources */,
 				845DC02728812370003FB5D0 /* PostTableViewCell.xib in Resources */,
+				84067BF8288C661D00549300 /* SendMessageViewController.xib in Resources */,
 				845DBFD1287635BB003FB5D0 /* LoginViewController.xib in Resources */,
 				845DBFF428764864003FB5D0 /* PostsListViewController.xib in Resources */,
 				84971721288A115E009BDEBD /* FriendsListViewController.xib in Resources */,
@@ -824,8 +960,10 @@
 				849717062887B596009BDEBD /* CommentTableViewCell.xib in Resources */,
 				8471C86E286C980F005E069A /* Assets.xcassets in Resources */,
 				845DC0012876756F003FB5D0 /* UserProfileViewController.xib in Resources */,
+				84067C03288C90E600549300 /* ReceiverTableViewCell.xib in Resources */,
 				845DBFDB28763C77003FB5D0 /* SignUpViewController.xib in Resources */,
 				8471C869286C980E005E069A /* Main.storyboard in Resources */,
+				84067BEB288C603800549300 /* ChatListViewController.xib in Resources */,
 				8497173E288A4788009BDEBD /* FriendRequestTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -853,30 +991,40 @@
 			files = (
 				8497171C288A10BD009BDEBD /* FriendsViewController.swift in Sources */,
 				8497172C288A16AE009BDEBD /* FriendRequestsViewController.swift in Sources */,
+				84067C05288CA42B00549300 /* ChatListViewModel.swift in Sources */,
 				845DC00C287E3D28003FB5D0 /* DeviceImageLibraryViewController.swift in Sources */,
 				845DC00A287E3CB0003FB5D0 /* ImagePickerHelperViewController.swift in Sources */,
 				845DBFC028762621003FB5D0 /* FirebaseManager.swift in Sources */,
 				84971736288A1FD9009BDEBD /* AddFriendTableViewCell.swift in Sources */,
 				845DC02028811D0A003FB5D0 /* Post.swift in Sources */,
+				84067C02288C90E600549300 /* ReceiverTableViewCell.swift in Sources */,
 				845DBFF828764DFC003FB5D0 /* EncodableExtension.swift in Sources */,
 				845DC0002876756F003FB5D0 /* UserProfileViewController.swift in Sources */,
 				845DBFDD28763F1D003FB5D0 /* SignUpViewModel.swift in Sources */,
+				84067C09288CAA4E00549300 /* ChatTableViewCell.swift in Sources */,
 				8471C866286C980E005E069A /* ViewController.swift in Sources */,
 				8497173D288A4788009BDEBD /* FriendRequestTableViewCell.swift in Sources */,
+				84067BF0288C64E800549300 /* Message.swift in Sources */,
 				845DBFD428763890003FB5D0 /* LoginViewModel.swift in Sources */,
 				84971724288A11B3009BDEBD /* AddFriendsViewController.swift in Sources */,
 				849717002887914C009BDEBD /* Reaction.swift in Sources */,
+				84067BEA288C603800549300 /* ChatListViewController.swift in Sources */,
 				845DBFC2287628CD003FB5D0 /* BaseModel.swift in Sources */,
+				84067C0C288CE73F00549300 /* DateHelper.swift in Sources */,
+				84067BEE288C641000549300 /* Chat.swift in Sources */,
 				845DC01D28811708003FB5D0 /* NewPostViewController.swift in Sources */,
 				8471C862286C980E005E069A /* AppDelegate.swift in Sources */,
 				845DBFEB287643FF003FB5D0 /* UsersLocal+CoreDataProperties.swift in Sources */,
 				845DC02D28863561003FB5D0 /* ConstantVariables.swift in Sources */,
 				84971732288A1BBB009BDEBD /* AddFriendsViewModel.swift in Sources */,
+				84067BFE288C90C400549300 /* SenderTableViewCell.swift in Sources */,
+				84067BF7288C661D00549300 /* SendMessageViewController.swift in Sources */,
 				845DC02A288607EE003FB5D0 /* PostDetailViewController.swift in Sources */,
 				8471C864286C980E005E069A /* SceneDelegate.swift in Sources */,
 				845DBFDA28763C77003FB5D0 /* SignUpViewController.swift in Sources */,
 				845DC02628812370003FB5D0 /* PostTableViewCell.swift in Sources */,
 				84971739288A4679009BDEBD /* FriendRequestsViewModel.swift in Sources */,
+				84067BFA288C7C1A00549300 /* SendMessageViewModel.swift in Sources */,
 				84971744288A5F7B009BDEBD /* FriendTableViewCell.swift in Sources */,
 				8471C8A5286C9B23005E069A /* User.swift in Sources */,
 				84971730288A1897009BDEBD /* FriendRequest.swift in Sources */,

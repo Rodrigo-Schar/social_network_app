@@ -19,6 +19,8 @@ enum FirebaseCollections: String {
     case reactions
     case comments
     case friendRequests
+    case chats
+    case messages
 }
 
 class FirebaseManager {
