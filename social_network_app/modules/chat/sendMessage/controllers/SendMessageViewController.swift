@@ -86,7 +86,7 @@ class SendMessageViewController: UIViewController {
               let keyboardframe = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
               let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
         
-        viewConstraint.constant = keyboardframe.size.height
+        viewConstraint.constant = (keyboardframe.size.height - 80)
         UIView.animate(withDuration: duration){
             self.view.layoutIfNeeded()
         }

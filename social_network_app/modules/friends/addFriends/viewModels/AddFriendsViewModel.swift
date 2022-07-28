@@ -29,7 +29,7 @@ class AddFriendsViewModel {
     
     func sendfriendRequest(userSenderId: String, userReceiverId: String, completion: ( () -> Void )?) {
         let requestId = firebaseManager.getDocID(forCollection: .friendRequests)
-        let request = FriendRequest(id: requestId, userSenderId: userSenderId, userReceiverId: userReceiverId, state: ConstantVariables.FriendRequestState.pending.rawValue, createdAt: 1.0, updatedAt: 1.0)
+        let request = FriendRequest(id: requestId, userSenderId: userSenderId, userReceiverId: userReceiverId, state: ConstantVariables.FriendRequestState.pending.rawValue, createdAt: DateHelper.dateToDouble(date: Date()), updatedAt: DateHelper.dateToDouble(date: Date()))
         
         firebaseManager.addDocument(document: request, collection: .friendRequests) { result in
             switch result {

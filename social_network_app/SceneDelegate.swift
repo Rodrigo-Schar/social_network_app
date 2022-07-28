@@ -26,6 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let rootViewController = getRootViewControllerForValidUser()
             UserProfileViewModel.shared.getDataUser()
             self.window?.rootViewController = rootViewController
+            
         } else {
             let rootViewController = getRootViewControllerForInvalidUser()
             self.window?.rootViewController = rootViewController
@@ -67,11 +68,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         //navController.navigationBar.prefersLargeTitles = true
         //navController.navigationBar.backgroundColor = UIColor(named: "primary")
-        navController.navigationBar.tintColor = .white
+        navController.navigationBar.tintColor = .black
             
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColor(named: "primary")
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
 
         navController.navigationBar.standardAppearance = appearance

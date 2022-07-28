@@ -17,24 +17,33 @@ class PostDetailViewController: UIViewController {
     @IBOutlet weak var commentView: UIView!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var postCommentButton: SecondaryButton!
-    
+    @IBOutlet weak var messageBoxView: NSLayoutConstraint!
     
     lazy var viewModel = {
-        PostsViewModel.shared
+        PostDetailViewModel.shared
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpView()
+        setUpKeyboardNotification()
         loadDetailData()
         loadComments()
+    }
+    
+    func setUpKeyboardNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillShow(_ :)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyBoardWillHide(_ :)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        self.view.addGestureRecognizer(tap)
     }
     
     func setUpView() {
         self.commentsTableView.delegate = self
         self.commentsTableView.dataSource = self
         self.commentTextField.layer.cornerRadius = 10
-        //self.commentsTableView.rowHeight = UITableView.automaticDimension
+        self.navigationItem.title = "Post Detail"
         
         let uiNib = UINib(nibName: "CommentTableViewCell", bundle: nil)
         self.commentsTableView.register(uiNib, forCellReuseIdentifier: "CommentCell")
@@ -51,11 +60,8 @@ class PostDetailViewController: UIViewController {
     
     func loadComments() {
         if let post = viewModel.postDetail.first {
-            viewModel.loadComments(postId: post.id)
-            viewModel.reloadData = { [weak self] in
-                DispatchQueue.main.async {
-                    self?.commentsTableView.reloadData()
-                }
+            viewModel.loadComments(postId: post.id) {
+                self.commentsTableView.reloadData()
             }
         }
     }
@@ -89,7 +95,30 @@ class PostDetailViewController: UIViewController {
         }
     }
     
-
+    @objc func keyBoardWillShow(_ notificacion: Notification){
+        guard let userInfo = notificacion.userInfo,
+              let keyboardframe = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
+              let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
+        
+        messageBoxView.constant = (keyboardframe.size.height - 80) * -1
+        UIView.animate(withDuration: duration){
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func keyBoardWillHide(_ notificacion: Notification){
+        guard let userInfo = notificacion.userInfo,
+              let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? TimeInterval else { return }
+        
+        messageBoxView.constant = 0
+        UIView.animate(withDuration: duration){
+            self.view.layoutIfNeeded()
+        }
+    }
+    
+    @objc func dismissKeyboard(){
+        self.view.endEditing(true)
+    }
 }
 
 extension PostDetailViewController: UITableViewDelegate, UITableViewDataSource {
@@ -99,6 +128,7 @@ extension PostDetailViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = commentsTableView.dequeueReusableCell(withIdentifier: "CommentCell") as? CommentTableViewCell ?? CommentTableViewCell()
+        cell.selectionStyle = .none
         
         let comment = viewModel.comments[indexPath.row]
         if let userData = UserProfileViewModel.shared.user {
@@ -106,8 +136,9 @@ extension PostDetailViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return cell
-        
     }
     
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }

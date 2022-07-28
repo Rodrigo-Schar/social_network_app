@@ -76,7 +76,7 @@ class UserProfileViewModel {
         let fileRef = storageRef.child(path)
         let uploadImage = fileRef.putData(data) { metadata, error in
             if error == nil && metadata != nil {
-                let userEd = User(id: user.id, name: user.name, nickname: user.nickname, email: user.email, password: user.password, imageUrl: path, createdAt: user.createdAt, updatedAt: 1.0)
+                let userEd = User(id: user.id, name: user.name, nickname: user.nickname, email: user.email, password: user.password, imageUrl: path, createdAt: user.createdAt, updatedAt: DateHelper.dateToDouble(date: Date()))
                 FirebaseManager.shared.updateDocument(document: userEd, collection: .users) { result in
                     //self.getDataUserNetwork()
                 }
