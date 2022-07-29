@@ -47,7 +47,7 @@ class NewPostViewController: ImagePickerHelperViewController {
     func setupEditPostView() {
         if let postData = UserProfileViewModel.shared.postDetail.first {
             let trashImage = UIImage(systemName: "trash.fill")?.withRenderingMode(.alwaysOriginal)
-            let trashButton = UIBarButtonItem(image: trashImage, style: .plain, target: self, action: #selector(trashPhoto))
+            let trashButton = UIBarButtonItem(image: trashImage, style: .plain, target: self, action: #selector(trashPost))
             navigationItem.rightBarButtonItem = trashButton
             self.navigationItem.title = "Edit Post"
             
@@ -121,7 +121,7 @@ class NewPostViewController: ImagePickerHelperViewController {
         }
     }
     
-    @objc func trashPhoto() {
+    @objc func trashPost() {
         guard let postData = UserProfileViewModel.shared.postDetail.first else { return }
         let alert = UIAlertController(title: "Delete", message: "Are you sure you want to delete the Post?: \(postData.title)", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler:  { action in

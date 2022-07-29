@@ -26,8 +26,9 @@ class PostsViewModel {
         firebaseManager.listenCollectionChanges(type: Post.self, collection: .posts) { result in
             switch result {
             case .success(let posts):
-                self.postsOriginalList = posts
                 self.posts = posts
+                self.posts = self.posts.sorted{ $0.createdAt < $1.createdAt }
+                self.postsOriginalList = self.posts
                 completion?()
             case .failure(let error):
                 print(error)
@@ -57,6 +58,10 @@ class PostsViewModel {
                 case .success(let reactions):
                     if reactions.count == 0 {
                         self.addNewReaction(post: post, userId: userData.id, typeReaction: typeReaction)
+                    } else {
+                        guard let reaction = reactions.first else { return }
+                        guard Int(reaction.reaction) != typeReaction.rawValue else { return }
+                        self.updateReaction(reaction: reaction, post: post, typeReaction: typeReaction)
                     }
                 case .failure(let error):
                     print(error)
@@ -70,7 +75,7 @@ class PostsViewModel {
         firebaseManager.addDocument(document: reaction, collection: .reactions) { result in
             switch result {
             case .success(let reaction):
-                self.editPostReaction(post: post, typeReaction: typeReaction)
+                self.editPostReaction(post: post, typeReaction: typeReaction, typeEdit: 1)
                 print(reaction)
             case .failure(let error):
                 print(error)
@@ -78,15 +83,25 @@ class PostsViewModel {
         }
     }
     
-    func editPostReaction(post: Post, typeReaction: TypeReactions) {
+    func editPostReaction(post: Post, typeReaction: TypeReactions, typeEdit: Int) {
         if typeReaction.rawValue == 1 {
-            let count = post.likes + 1
-            let edPost = Post(id: post.id, title: post.title, description: post.description, imageUrl: post.imageUrl, projectUrl: post.projectUrl, likes: count, dislikes: post.dislikes, ownerId: post.ownerId, createdAt: post.createdAt, updatedAt: DateHelper.dateToDouble(date: Date()))
+            let countLikes = post.likes + 1
+            var countDislikes = post.dislikes
+            if typeEdit == 2 {
+                countDislikes += -1
+            }
+            
+            let edPost = Post(id: post.id, title: post.title, description: post.description, imageUrl: post.imageUrl, projectUrl: post.projectUrl, likes: countLikes, dislikes: countDislikes, ownerId: post.ownerId, createdAt: post.createdAt, updatedAt: DateHelper.dateToDouble(date: Date()))
             self.updatePostReactions(post: edPost)
             
         } else {
-            let count = post.dislikes + 1
-            let edPost = Post(id: post.id, title: post.title, description: post.description, imageUrl: post.imageUrl, projectUrl: post.projectUrl, likes: post.likes, dislikes: count, ownerId: post.ownerId, createdAt: post.createdAt, updatedAt: DateHelper.dateToDouble(date: Date()))
+            var countLikes = post.likes
+            let countDislikes = post.dislikes + 1
+            if typeEdit == 2 {
+                countLikes += -1
+            }
+            
+            let edPost = Post(id: post.id, title: post.title, description: post.description, imageUrl: post.imageUrl, projectUrl: post.projectUrl, likes: countLikes, dislikes: countDislikes, ownerId: post.ownerId, createdAt: post.createdAt, updatedAt: DateHelper.dateToDouble(date: Date()))
             self.updatePostReactions(post: edPost)
         }
     }
@@ -98,6 +113,18 @@ class PostsViewModel {
                 print(post)
             case .failure(let error):
                 print(error)
+            }
+        }
+    }
+    
+    func updateReaction(reaction: Reaction, post: Post, typeReaction: TypeReactions) {
+        let reac = Reaction(id: reaction.id, postId: reaction.postId, userId: reaction.userId, reaction: Double(typeReaction.rawValue), createdAt: reaction.createdAt, updatedAt: DateHelper.dateToDouble(date: Date()))
+        firebaseManager.updateDocument(document: reac, collection: .reactions) { result in
+            switch result {
+                case .success(_):
+                    self.editPostReaction(post: post, typeReaction: typeReaction, typeEdit: 2)
+                case .failure(let error):
+                    print(error)
             }
         }
     }

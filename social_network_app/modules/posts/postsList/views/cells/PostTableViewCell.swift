@@ -42,6 +42,8 @@ class PostTableViewCell: UITableViewCell {
         containerView.layer.borderColor = UIColor.lightGray.cgColor
         containerPictureView.layer.borderWidth = 1
         containerPictureView.layer.borderColor = UIColor.black.cgColor
+        self.likeImageView.image = UIImage(named: "likeIcon")
+        self.dislikeImageView.image = UIImage(named: "dislikeIcon")
         
         
         titleLabel.text = post.title
@@ -76,8 +78,14 @@ class PostTableViewCell: UITableViewCell {
                     guard let reacction = reactions.first else { return }
                     if reacction.reaction == 1 {
                         self.likeImageView.image = UIImage(named: "likeIconSelected")
+                        self.dislikeImageView.image = UIImage(named: "dislikeIcon")
+                        self.likeButton.isEnabled = false
+                        self.dislikeButton.isEnabled = true
                     } else {
                         self.dislikeImageView.image = UIImage(named: "dislikeIconSelected")
+                        self.likeImageView.image = UIImage(named: "likeIcon")
+                        self.likeButton.isEnabled = true
+                        self.dislikeButton.isEnabled = false
                     }
                 }
             case .failure(let error):
@@ -87,14 +95,12 @@ class PostTableViewCell: UITableViewCell {
     }
     
     @IBAction func likePost(_ sender: Any) {
-        likeImageView.image = UIImage(named: "likeIconSelected")
         let buttonTag = likeButton.tag
         let post = viewModel.posts[buttonTag]
         viewModel.addPostReaction(post: post, typeReaction: TypeReactions.like)
     }
     
     @IBAction func disLikePost(_ sender: Any) {
-        dislikeImageView.image = UIImage(named: "dislikeIconSelected")
         let buttonTag = dislikeButton.tag
         let post = viewModel.posts[buttonTag]
         viewModel.addPostReaction(post: post, typeReaction: TypeReactions.dislike)

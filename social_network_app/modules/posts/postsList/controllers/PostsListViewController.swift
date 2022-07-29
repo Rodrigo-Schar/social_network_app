@@ -19,14 +19,11 @@ class PostsListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        setupImageButton()
-        getPosts()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        postsTableView.reloadData()
+        UserProfileViewModel.shared.getDataUser() {
+            self.setupView()
+            self.setupImageButton()
+            self.getPosts()
+        }
     }
     
     func getPosts() {

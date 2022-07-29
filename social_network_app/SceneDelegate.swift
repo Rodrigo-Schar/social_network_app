@@ -14,19 +14,17 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         Self.shared = self
-        setupRootControllerIfNeeded(validUser: false)
+        let login = LoginViewController()
+        let validUser = login.verifyValidUser()
+        setupRootControllerIfNeeded(validUser: validUser)
         guard let _ = (scene as? UIWindowScene) else { return }
     }
     
     func setupRootControllerIfNeeded(validUser: Bool) {
-        let login = LoginViewController()
-        let validUser = login.verifyValidUser()
         if validUser {
             // Create VC for TabBar
-            let rootViewController = getRootViewControllerForValidUser()
-            UserProfileViewModel.shared.getDataUser()
+            let rootViewController = self.getRootViewControllerForValidUser()
             self.window?.rootViewController = rootViewController
-            
         } else {
             let rootViewController = getRootViewControllerForInvalidUser()
             self.window?.rootViewController = rootViewController

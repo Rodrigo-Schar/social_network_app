@@ -45,11 +45,20 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "FriendCell") as? FriendTableViewCell ?? FriendTableViewCell()
+        cell.selectionStyle = .none
         let request = viewModel.friends[indexPath.row]
         
-        viewModel.getUserFriend(userId: request.userSenderId) {
-            if let user = self.viewModel.users.first {
-                cell.setData(user: user)
+        if let userData = UserProfileViewModel.shared.user, userData.id == request.userReceiverId {
+            viewModel.getUserFriend(userId: request.userSenderId) {
+                if let user = self.viewModel.users.first {
+                    cell.setData(user: user)
+                }
+            }
+        } else {
+            viewModel.getUserFriend(userId: request.userReceiverId) {
+                if let user = self.viewModel.users.first {
+                    cell.setData(user: user)
+                }
             }
         }
         
@@ -65,11 +74,21 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
         let buttonTag = sender.tag
         let request = viewModel.friends[buttonTag]
         
-        viewModel.getUserFriend(userId: request.userSenderId) {
-            if let user = self.viewModel.users.first {
-                SendMessageViewModel.shared.userReceiver = user
-                let vc = SendMessageViewController()
-                self.show(vc, sender: nil)
+        if let userData = UserProfileViewModel.shared.user, userData.id == request.userReceiverId {
+            viewModel.getUserFriend(userId: request.userSenderId) {
+                if let user = self.viewModel.users.first {
+                    SendMessageViewModel.shared.userReceiver = user
+                    let vc = SendMessageViewController()
+                    self.show(vc, sender: nil)
+                }
+            }
+        } else {
+            viewModel.getUserFriend(userId: request.userReceiverId) {
+                if let user = self.viewModel.users.first {
+                    SendMessageViewModel.shared.userReceiver = user
+                    let vc = SendMessageViewController()
+                    self.show(vc, sender: nil)
+                }
             }
         }
         

@@ -54,12 +54,49 @@ class NewEditPostViewModel {
     func deletePost(postId: String, completion: ( () -> Void )?) {
         firebaseManager.removeDocument(documentID: postId, collection: .posts) { result in
             switch result {
-            case .success(let string):
-                print(string)
+            case .success(_):
+                self.deletePostImage(postId: postId)
+                self.deletePostcomments(postId: postId)
+                self.deletePostReactions(postId: postId)
                 completion?()
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    func deletePostcomments(postId: String) {
+        firebaseManager.removeDocumentByParameter(collection: .comments, field: "postId", parameter: postId) { result in
+            switch result {
+            case .success(let str):
+                print(str)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func deletePostReactions(postId: String){
+        firebaseManager.removeDocumentByParameter(collection: .reactions, field: "postId", parameter: postId) { result in
+            switch result {
+            case .success(let str):
+                print(str)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func deletePostImage(postId: String) {
+        let storageRef = Storage.storage().reference()
+
+        let path = "PostImages/\(postId).jpg"
+        let fileRef = storageRef.child(path)
+        
+        fileRef.delete { error in
+          if let error = error {
+            print(error)
+          }
         }
     }
 }

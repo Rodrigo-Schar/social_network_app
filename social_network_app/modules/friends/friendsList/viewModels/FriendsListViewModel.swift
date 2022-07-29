@@ -20,13 +20,31 @@ class FriendsListViewModel {
             firebaseManager.listenCollectionChangesBytwoParameter(type: FriendRequest.self, collection: .friendRequests, field1: "userReceiverId", field2: "state", parameter1: userData.id, parameter2: ConstantVariables.FriendRequestState.accepted.rawValue) { result in
                 switch result {
                     case .success(let requests):
+                        self.friends.removeAll()
                         self.friends = requests
-                        completion?()
+                        self.loadFriendsBySender(userSenderId: userData.id) {
+                        completion?() }
                     case .failure(let error):
                         print(error)
                 }
             }
         }
+    }
+    
+    func loadFriendsBySender(userSenderId: String, completion: ( () -> Void )?) {
+        firebaseManager.listenCollectionChangesBytwoParameter(type: FriendRequest.self, collection: .friendRequests, field1: "userSenderId", field2: "state", parameter1: userSenderId, parameter2: ConstantVariables.FriendRequestState.accepted.rawValue) { result in
+                switch result {
+                    case .success(let requests):
+                        if !requests.isEmpty {
+                            for friend in requests {
+                                self.friends.append(friend)
+                            }
+                        }
+                        completion?()
+                    case .failure(let error):
+                        print(error)
+                }
+            }
     }
     
     func getUserFriend(userId: String, completion: ( () -> Void )? ) {
