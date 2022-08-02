@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseStorage
 import SwiftUI
+import SVProgressHUD
 
 class UserProfileViewController: ImagePickerHelperViewController {
     
@@ -25,6 +26,7 @@ class UserProfileViewController: ImagePickerHelperViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         setupView()
         loadDataUser()
         loadProfilePicture()
@@ -52,6 +54,7 @@ class UserProfileViewController: ImagePickerHelperViewController {
             emailLabel.text = userData.email
             viewModel.loadMyPosts(ownerId: userData.id) {
                 self.myPostsTableView.reloadData()
+                SVProgressHUD.dismiss()
             }
         }
     }
@@ -74,8 +77,14 @@ class UserProfileViewController: ImagePickerHelperViewController {
     }
     
     override func saveSelectedImageInFirebase(withExtension: String, data: Data) {
+        SVProgressHUD.show()
         if let user = viewModel.user {
-            viewModel.addProfilePicture(data: data, user: user)
+            viewModel.addProfilePicture(data: data, user: user) {
+                SVProgressHUD.dismiss()
+                self.showToast(message: "Photo Updated", seconds: 1)
+                self.loadProfilePicture()
+            }
+            
         }
     }
     

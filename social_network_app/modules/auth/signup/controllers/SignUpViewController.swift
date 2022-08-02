@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class SignUpViewController: UIViewController {
     
@@ -21,6 +22,7 @@ class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.title = "Sign Up"
         setUpKeyboardNotification()
     }
     
@@ -56,12 +58,17 @@ class SignUpViewController: UIViewController {
             let nickname = nicknameTextField.text ?? ""
             let email = emailTextField.text ?? "test@user.com"
             let pass = passwordTextField.text ?? "pass"
+            SVProgressHUD.show()
             
             SignUpViewModel.shared.addUser(name: name, nickname: nickname, email: email, password: pass) { result in
                 switch result {
                     case .success(let user):
                         print("Success", user)
-                        self.navigationController?.popViewController(animated: true)
+                        SVProgressHUD.dismiss()
+                        self.showToast(message: "You have successfully registered", seconds: 1)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            self.navigationController?.popViewController(animated: true)
+                        }
                     case .failure(let error):
                         print("Error", error)
                 }

@@ -27,6 +27,7 @@ class PostDetailViewController: UIViewController {
         super.viewDidLoad()
         setUpView()
         setUpKeyboardNotification()
+        setUpLabelUrlTap()
         loadDetailData()
         loadComments()
     }
@@ -37,6 +38,13 @@ class PostDetailViewController: UIViewController {
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         self.view.addGestureRecognizer(tap)
+    }
+    
+    func setUpLabelUrlTap() {
+        urlProjectLabel.isUserInteractionEnabled = true
+        let tap = UITapGestureRecognizer.init(target: self, action: #selector(tapFunction))
+        tap.numberOfTapsRequired = 1
+        urlProjectLabel.addGestureRecognizer(tap)
     }
     
     func setUpView() {
@@ -118,6 +126,14 @@ class PostDetailViewController: UIViewController {
     
     @objc func dismissKeyboard(){
         self.view.endEditing(true)
+    }
+    
+    @objc func tapFunction(sender:UITapGestureRecognizer)
+    {
+        // this is for copying label text to clipboard.
+        let labeltext = urlProjectLabel.text
+        UIPasteboard.general.string = labeltext
+
     }
 }
 

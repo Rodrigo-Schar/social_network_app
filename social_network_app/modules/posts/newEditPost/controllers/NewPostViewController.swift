@@ -9,7 +9,6 @@ import UIKit
 
 class NewPostViewController: ImagePickerHelperViewController {
     
-    @IBOutlet weak var addEditLabel: UILabel!
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var urlTextField: UITextField!
@@ -40,7 +39,6 @@ class NewPostViewController: ImagePickerHelperViewController {
         descriptionTextField.text = ""
         urlTextField.text = ""
         postImageImageView.image = nil
-        addEditLabel.text = "New Post"
         newEditPostButton.setTitle("Post", for: .normal)
     }
     
@@ -51,7 +49,6 @@ class NewPostViewController: ImagePickerHelperViewController {
             navigationItem.rightBarButtonItem = trashButton
             self.navigationItem.title = "Edit Post"
             
-            addEditLabel.text = "Edit Post"
             newEditPostButton.setTitle("Edit Post", for: .normal)
             titleTextField.text = postData.title
             descriptionTextField.text = postData.description
@@ -98,8 +95,11 @@ class NewPostViewController: ImagePickerHelperViewController {
         
         viewModel.addNewPost(title: title, description: descrip, projecUrl: projectUrl, ownerId: userData.id) { result in
             switch result {
-                case .success(let post):
-                    self.navigationController?.popViewController(animated: true)
+                case .success(_):
+                    self.showToast(message: "Post Created", seconds: 1)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 case .failure(let error):
                     print(error)
             }
@@ -114,7 +114,10 @@ class NewPostViewController: ImagePickerHelperViewController {
         viewModel.editPost(postId: post.id, title: title, description: descrip, projecUrl: projectUrl, likes: post.likes, dislikes: post.dislikes, ownerId: userData.id, created: post.createdAt) { result in
             switch result {
                 case .success(let post):
-                    self.navigationController?.popViewController(animated: true)
+                    self.showToast(message: "Post Updated", seconds: 1)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                        self.navigationController?.popViewController(animated: true)
+                    }
                 case .failure(let error):
                     print(error)
             }
@@ -127,7 +130,10 @@ class NewPostViewController: ImagePickerHelperViewController {
         alert.addAction(UIAlertAction(title: "Delete", style: .destructive, handler:  { action in
             
             self.viewModel.deletePost(postId: postData.id) {
-                self.navigationController?.popViewController(animated: true)
+                self.showToast(message: "Post Deleted", seconds: 1)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.navigationController?.popViewController(animated: true)
+                }
             }
         }))
         

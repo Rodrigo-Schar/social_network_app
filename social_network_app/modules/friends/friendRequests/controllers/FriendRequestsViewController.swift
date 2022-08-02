@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class FriendRequestsViewController: UIViewController {
     
@@ -17,6 +18,7 @@ class FriendRequestsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         setupView()
         getFriendRequests()
     }
@@ -32,6 +34,7 @@ class FriendRequestsViewController: UIViewController {
     func getFriendRequests() {
         viewModel.loadFriendsRequests() {
             self.friendRequestsTableView.reloadData()
+            SVProgressHUD.dismiss()
         }
     }
 }

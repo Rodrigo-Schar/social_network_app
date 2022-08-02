@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class PostsListViewController: UIViewController {
     
@@ -19,6 +20,7 @@ class PostsListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         UserProfileViewModel.shared.getDataUser() {
             self.setupView()
             self.setupImageButton()
@@ -29,6 +31,7 @@ class PostsListViewController: UIViewController {
     func getPosts() {
         viewModel.loadPosts() {
             self.postsTableView.reloadData()
+            SVProgressHUD.dismiss()
         }
     }
     

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ChatListViewController: UIViewController {
     @IBOutlet weak var chatTableView: UITableView!
@@ -16,6 +17,7 @@ class ChatListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         setupView()
         loadChats()
     }
@@ -32,6 +34,7 @@ class ChatListViewController: UIViewController {
         guard let userData = UserProfileViewModel.shared.user else { return }
         viewModel.getChatIdBySender(senderId: userData.id) {
             self.chatTableView.reloadData()
+            SVProgressHUD.dismiss()
         }
     }
 }

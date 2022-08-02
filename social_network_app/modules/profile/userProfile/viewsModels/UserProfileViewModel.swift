@@ -71,7 +71,7 @@ class UserProfileViewModel {
         }
     }
     
-    func addProfilePicture(data: Data, user: User) {
+    func addProfilePicture(data: Data, user: User, completion: ( () -> Void )? ) {
         //get the storage refrence
         let storageRef = Storage.storage().reference()
         //specify the file path and name
@@ -81,7 +81,7 @@ class UserProfileViewModel {
             if error == nil && metadata != nil {
                 let userEd = User(id: user.id, name: user.name, nickname: user.nickname, email: user.email, password: user.password, imageUrl: path, createdAt: user.createdAt, updatedAt: DateHelper.dateToDouble(date: Date()))
                 FirebaseManager.shared.updateDocument(document: userEd, collection: .users) { result in
-                    //self.getDataUserNetwork()
+                    completion?()
                 }
             }
         }

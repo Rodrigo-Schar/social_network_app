@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class AddFriendsViewController: UIViewController {
     
@@ -53,11 +54,14 @@ extension AddFriendsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     @objc func sendRequest(sender: UIButton) {
+        SVProgressHUD.show()
         let buttonTag = sender.tag
         let user = viewModel.usersList[buttonTag]
         if let userData = UserProfileViewModel.shared.user {
             viewModel.sendfriendRequest(userSenderId: userData.id, userReceiverId: user.id) {
                 self.addFriendTableView.reloadData()
+                SVProgressHUD.dismiss()
+                self.showToast(message: "Request Sent", seconds: 1)
             }
         }
     }
@@ -68,10 +72,11 @@ extension AddFriendsViewController: UITableViewDelegate, UITableViewDataSource {
 extension AddFriendsViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let text = searchBar.text, !text.isEmpty else { return }
-        
+        SVProgressHUD.show()
         viewModel.searchFriend(text: text) {
             self.addFriendTableView.reloadData()
             self.view.endEditing(true)
+            SVProgressHUD.dismiss()
         }
     }
     

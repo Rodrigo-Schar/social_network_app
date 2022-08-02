@@ -17,6 +17,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let login = LoginViewController()
         let validUser = login.verifyValidUser()
         setupRootControllerIfNeeded(validUser: validUser)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window = self.window
         guard let _ = (scene as? UIWindowScene) else { return }
     }
     
