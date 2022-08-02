@@ -32,6 +32,11 @@ class AddFriendsViewController: UIViewController {
 }
 
 extension AddFriendsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 65
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.usersList.count
     }

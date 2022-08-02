@@ -82,11 +82,11 @@ class PostDetailViewController: UIViewController {
     @IBAction func postComment(_ sender: Any) {
         guard let post = viewModel.postDetail.first else { return }
         guard let userData = UserProfileViewModel.shared.user else { return }
-        guard let text = commentTextField.text else { return }
+        guard let text = commentTextField.text, !text.isEmpty else { return }
         
         viewModel.addNewComment(postId: post.id, ownerId: userData.id, description: text) { result in
             switch result {
-            case .success(let comment):
+            case .success(_):
                 self.commentTextField.text = ""
                 self.commentsTableView.reloadData()
             case .failure(let error):

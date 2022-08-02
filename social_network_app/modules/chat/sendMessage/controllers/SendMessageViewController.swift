@@ -9,11 +9,13 @@ import UIKit
 
 class SendMessageViewController: UIViewController {
     @IBOutlet weak var userImageView: UIImageView!
+    @IBOutlet weak var userView: UIView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var messagesTableView: UITableView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var viewConstraint: NSLayoutConstraint!
     @IBOutlet weak var userReceiverView: UIView!
+    @IBOutlet weak var sendMessageView: UIView!
     
     lazy var viewModel = {
         SendMessageViewModel.shared
@@ -49,6 +51,11 @@ class SendMessageViewController: UIViewController {
     }
     
     func setupView() {
+        userView.layer.cornerRadius = userView.bounds.size.width / 2.0
+        userImageView.layer.borderWidth = 0.2
+        userImageView.layer.borderColor = UIColor.black.cgColor
+        userImageView.layer.cornerRadius = userImageView.bounds.size.width / 2.0
+        sendMessageView.layer.cornerRadius = 10
         self.userReceiverView.layer.cornerRadius = 10
         self.messagesTableView.delegate = self
         self.messagesTableView.dataSource = self
@@ -129,8 +136,8 @@ extension SendMessageViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-            return UITableView.automaticDimension
-        }
+        return UITableView.automaticDimension
+    }
     
     
 }

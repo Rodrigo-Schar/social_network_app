@@ -37,6 +37,11 @@ class FriendRequestsViewController: UIViewController {
 }
 
 extension FriendRequestsViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.friendRequests.count
     }
