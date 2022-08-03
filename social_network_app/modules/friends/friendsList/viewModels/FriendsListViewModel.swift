@@ -37,7 +37,15 @@ class FriendsListViewModel {
                     case .success(let requests):
                         if !requests.isEmpty {
                             for friend in requests {
-                                self.friends.append(friend)
+                                if !self.friends.isEmpty {
+                                       for fri in self.friends {
+                                            if friend.userSenderId != fri.userSenderId, friend.userReceiverId != fri.userReceiverId {
+                                                     self.friends.append(friend)
+                                            }
+                                       }
+                                } else {
+                                     self.friends.append(friend)
+                                }
                             }
                         }
                         completion?()
@@ -56,6 +64,23 @@ class FriendsListViewModel {
             case .failure(let error):
                 print(error)
             }
+        }
+    }
+    
+    func deleteFriendBySenderId(userSenderId: String, userId: String) {
+        firebaseManager.getDocumentsByTwoParameter(type: FriendRequest.self, forCollection: .friendRequests, field1: "userSenderId", field2: "userReceiverId", parameter1: userSenderId, parameter2: userId) { result in
+            switch result {
+                case .success(let requests):
+                    if !requests.isEmpty {
+                        guard let request = requests.first else { return }
+                        self.friends.removeAll()
+                        self.firebaseManager.removeDocument(documentID: request.id, collection: .friendRequests) { result in }
+                    } else {
+                        self.deleteFriendBySenderId(userSenderId: userId, userId: userSenderId)
+                    }
+                case .failure(let error):
+                    print(error)
+                }
         }
     }
 }

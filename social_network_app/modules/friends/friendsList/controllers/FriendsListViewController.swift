@@ -24,6 +24,13 @@ class FriendsListViewController: UIViewController {
         getFriends()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupView()
+        getFriends()
+        print(self.viewModel.friends.count)
+    }
+    
     func setupView() {
         self.friendsTableView.delegate = self
         self.friendsTableView.dataSource = self
@@ -105,6 +112,20 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     @objc func deleteFriend(sender: UIButton) {
         let buttonTag = sender.tag
         let request = viewModel.friends[buttonTag]
+        
+        let dialogMessage = UIAlertController(title: "Delete Friend", message: "Are you sure you want to delete your friend?", preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "delete", style: .destructive, handler: { (action) -> Void in
+            self.viewModel.deleteFriendBySenderId(userSenderId: request.userSenderId, userId: request.userReceiverId)
+        })
+                
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            print("Canceled")
+        }
+                
+        dialogMessage.addAction(confirm)
+        dialogMessage.addAction(cancel)
+        self.present(dialogMessage, animated: true, completion: nil)
+        
         
     }
 }

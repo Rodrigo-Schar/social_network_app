@@ -20,6 +20,7 @@ class AddFriendsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
+        viewModel.delegate = self
     }
     
     func setupView() {
@@ -58,11 +59,7 @@ extension AddFriendsViewController: UITableViewDelegate, UITableViewDataSource {
         let buttonTag = sender.tag
         let user = viewModel.usersList[buttonTag]
         if let userData = UserProfileViewModel.shared.user {
-            viewModel.sendfriendRequest(userSenderId: userData.id, userReceiverId: user.id) {
-                self.addFriendTableView.reloadData()
-                SVProgressHUD.dismiss()
-                self.showToast(message: "Request Sent", seconds: 1)
-            }
+            viewModel.sendfriendRequest(userSenderId: userData.id, userReceiverId: user.id)
         }
     }
     
@@ -86,4 +83,22 @@ extension AddFriendsViewController: UISearchBarDelegate {
         self.addFriendTableView.reloadData()
         self.view.endEditing(true)
     }
+}
+
+extension AddFriendsViewController: addFriendsViewModelDelegate {
+    func friendAdded(code: Int) {
+        if code == 1 {
+            SVProgressHUD.dismiss()
+            self.addFriendSearchBar.text = ""
+            viewModel.usersList.removeAll()
+            self.addFriendTableView.reloadData()
+            self.showToastError(message: "Can not Send request to yourself", seconds: 2)
+        }
+        self.addFriendSearchBar.text = ""
+        self.addFriendTableView.reloadData()
+        SVProgressHUD.dismiss()
+        self.showToast(message: "Request Sent", seconds: 1)
+    }
+    
+    
 }
