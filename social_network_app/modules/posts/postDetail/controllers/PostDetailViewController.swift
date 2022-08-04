@@ -145,10 +145,12 @@ extension PostDetailViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = commentsTableView.dequeueReusableCell(withIdentifier: "CommentCell") as? CommentTableViewCell ?? CommentTableViewCell()
         cell.selectionStyle = .none
-        
         let comment = viewModel.comments[indexPath.row]
-        if let userData = UserProfileViewModel.shared.user {
-            cell.setData(user: userData.name, comment: comment)
+    
+        viewModel.getUserFriend(userId: comment.ownerId) {
+            if let user = self.viewModel.users.first {
+                cell.setData(user: user.name, comment: comment)
+            }
         }
         
         return cell

@@ -52,6 +52,7 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = chatTableView.dequeueReusableCell(withIdentifier: "ChatCell") as? ChatTableViewCell ?? ChatTableViewCell()
         let chat = viewModel.chats[indexPath.row]
+        cell.selectionStyle = .none
         
         if let userData = UserProfileViewModel.shared.user, userData.id == chat.participant1Id {
             viewModel.getUserChat(userId: chat.participant2Id) {

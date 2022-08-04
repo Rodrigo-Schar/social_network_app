@@ -15,6 +15,7 @@ class PostDetailViewModel {
     
     var postDetail = [Post]()
     var comments = [Comment]()
+    var users = [User]()
     
     func addPostForDetail(post: Post) {
         postDetail.removeAll()
@@ -46,6 +47,18 @@ class PostDetailViewModel {
         let comment = Comment(id: commentId, description: description, ownerId: ownerId, postId: postId, createdAt: DateHelper.dateToDouble(date: Date()), updatedAt: DateHelper.dateToDouble(date: Date()))
         firebaseManager.addDocument(document: comment, collection: .comments) { result in
             completion(result)
+        }
+    }
+    
+    func getUserFriend(userId: String, completion: ( () -> Void )? ) {
+        firebaseManager.getDocumentsByParameter(type: User.self, forCollection: .users, field: "id", parameter: userId) { result in
+            switch result {
+            case .success(let users):
+                self.users = users
+                completion?()
+            case .failure(let error):
+                print(error)
+            }
         }
     }
 }
