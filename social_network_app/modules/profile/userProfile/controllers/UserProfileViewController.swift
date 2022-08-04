@@ -8,6 +8,7 @@
 import UIKit
 import FirebaseStorage
 import SwiftUI
+import SVProgressHUD
 
 class UserProfileViewController: ImagePickerHelperViewController {
     
@@ -25,6 +26,7 @@ class UserProfileViewController: ImagePickerHelperViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         setupView()
         loadDataUser()
         loadProfilePicture()
@@ -52,6 +54,7 @@ class UserProfileViewController: ImagePickerHelperViewController {
             emailLabel.text = userData.email
             viewModel.loadMyPosts(ownerId: userData.id) {
                 self.myPostsTableView.reloadData()
+                SVProgressHUD.dismiss()
             }
         }
     }
@@ -74,8 +77,14 @@ class UserProfileViewController: ImagePickerHelperViewController {
     }
     
     override func saveSelectedImageInFirebase(withExtension: String, data: Data) {
+        SVProgressHUD.show()
         if let user = viewModel.user {
-            viewModel.addProfilePicture(data: data, user: user)
+            viewModel.addProfilePicture(data: data, user: user) {
+                SVProgressHUD.dismiss()
+                self.showToast(message: "Photo Updated", seconds: 1)
+                self.loadProfilePicture()
+            }
+            
         }
     }
     
@@ -104,8 +113,8 @@ class UserProfileViewController: ImagePickerHelperViewController {
         viewModel.userLogin = nil
         viewModel.postDetail.removeAll()
         
-        PostsViewModel.shared.postDetail.removeAll()
-        PostsViewModel.shared.comments.removeAll()
+        PostDetailViewModel.shared.postDetail.removeAll()
+        PostDetailViewModel.shared.comments.removeAll()
         PostsViewModel.shared.posts.removeAll()
         PostsViewModel.shared.postsOriginalList.removeAll()
         
@@ -137,6 +146,7 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = myPostsTableView.dequeueReusableCell(withIdentifier: ConstantVariables.postCellIdentifier) as? PostTableViewCell ?? PostTableViewCell()
+        cell.selectionStyle = .none
         
         let post = viewModel.myPosts[indexPath.row]
         cell.setData(post: post)
@@ -157,7 +167,6 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
         
         let vc = NewPostViewController()
         vc.typeView = 2
-        vc.delegate = self
         show(vc, sender: nil)
     }
     
@@ -176,22 +185,9 @@ extension UserProfileViewController: UITableViewDelegate, UITableViewDataSource 
     @objc func commentPost(sender: UIButton) {
         let buttonTag = sender.tag
         let post = viewModel.myPosts[buttonTag]
-        PostsViewModel.shared.addPostForDetail(post: post)
+        PostDetailViewModel.shared.addPostForDetail(post: post)
         
         let vc = PostDetailViewController()
         show(vc, sender: nil)
-    }
-}
-
-extension UserProfileViewController: NewEditPostDelegate {
-    func postAdded(post: Post) {
-        self.myPostsTableView.reloadData()
-    }
-    
-    func postEdited(post: Post) {
-        if let index = viewModel.myPosts.firstIndex(where: { post.id == $0.id }) {
-            let indexPath = IndexPath(row: index, section: 0)
-            self.myPostsTableView.reloadRows(at: [indexPath], with: .automatic)
-        }
     }
 }

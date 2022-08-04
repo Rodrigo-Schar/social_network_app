@@ -22,6 +22,9 @@ class AddFriendTableViewCell: UITableViewCell {
     }
     
     func setupData(user: User) {
+        userImageView.layer.borderWidth = 0.2
+        userImageView.layer.borderColor = UIColor.black.cgColor
+        userImageView.layer.cornerRadius = userImageView.bounds.size.width / 2.0
         self.userNameLabel.text = user.name
         loadUserImage(user: user)
     }

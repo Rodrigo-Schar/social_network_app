@@ -21,22 +21,25 @@ class UserProfileViewModel {
     var myPosts = [Post]()
     var postDetail = [Post]()
     
-    func getDataUser() {
+    func getDataUser(completion: ( () -> Void )?) {
         if let userData = userLogin {
-            getDataUserNetwork(id: userData.id)
+            getDataUserNetwork(id: userData.id) {
+                completion?() }
         } else {
             let userLocal = getDataUserLocal()
             guard let userId = userLocal?.id else { return }
-            getDataUserNetwork(id: userId)
+            getDataUserNetwork(id: userId){
+                completion?() }
         }
     }
     
-    func getDataUserNetwork(id: String) {
+    func getDataUserNetwork(id: String, completion: ( () -> Void )?) {
         firebaseManager.getDocumentsByParameter(type: User.self, forCollection: .users, field: "id", parameter: id) { result in
             switch result {
                 case .success(let posts):
                     if let userData = posts.first {
                         self.user = userData
+                        completion?()
                     }
                 case .failure(let error):
                     print(error)
@@ -68,7 +71,7 @@ class UserProfileViewModel {
         }
     }
     
-    func addProfilePicture(data: Data, user: User) {
+    func addProfilePicture(data: Data, user: User, completion: ( () -> Void )? ) {
         //get the storage refrence
         let storageRef = Storage.storage().reference()
         //specify the file path and name
@@ -76,9 +79,9 @@ class UserProfileViewModel {
         let fileRef = storageRef.child(path)
         let uploadImage = fileRef.putData(data) { metadata, error in
             if error == nil && metadata != nil {
-                let userEd = User(id: user.id, name: user.name, nickname: user.nickname, email: user.email, password: user.password, imageUrl: path, createdAt: user.createdAt, updatedAt: 1.0)
+                let userEd = User(id: user.id, name: user.name, nickname: user.nickname, email: user.email, password: user.password, imageUrl: path, createdAt: user.createdAt, updatedAt: DateHelper.dateToDouble(date: Date()))
                 FirebaseManager.shared.updateDocument(document: userEd, collection: .users) { result in
-                    //self.getDataUserNetwork()
+                    completion?()
                 }
             }
         }

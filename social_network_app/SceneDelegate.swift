@@ -14,17 +14,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         Self.shared = self
-        setupRootControllerIfNeeded(validUser: false)
+        let login = LoginViewController()
+        let validUser = login.verifyValidUser()
+        setupRootControllerIfNeeded(validUser: validUser)
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.window = self.window
         guard let _ = (scene as? UIWindowScene) else { return }
     }
     
     func setupRootControllerIfNeeded(validUser: Bool) {
-        let login = LoginViewController()
-        let validUser = login.verifyValidUser()
         if validUser {
             // Create VC for TabBar
-            let rootViewController = getRootViewControllerForValidUser()
-            UserProfileViewModel.shared.getDataUser()
+            let rootViewController = self.getRootViewControllerForValidUser()
             self.window?.rootViewController = rootViewController
         } else {
             let rootViewController = getRootViewControllerForInvalidUser()
@@ -67,11 +68,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         //navController.navigationBar.prefersLargeTitles = true
         //navController.navigationBar.backgroundColor = UIColor(named: "primary")
-        navController.navigationBar.tintColor = .white
+        navController.navigationBar.tintColor = .black
             
         let appearance = UINavigationBarAppearance()
         appearance.backgroundColor = UIColor(named: "primary")
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.black]
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
 
         navController.navigationBar.standardAppearance = appearance

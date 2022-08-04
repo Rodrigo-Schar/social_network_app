@@ -182,4 +182,17 @@ class FirebaseManager {
             }
         }
     }
+    
+    func removeDocumentByParameter(collection: FirebaseCollections, field: String, parameter: String, completion: @escaping ( Result<String, Error>) -> Void  ) {
+        
+        db.collection(collection.rawValue).whereField(field, isEqualTo: parameter).getDocuments() { querySnapshot, error in
+            if let error = error {
+                print("Error getting documents \(error)")
+            } else {
+                for document in querySnapshot!.documents {
+                    document.reference.delete()
+                }
+            }
+        }
+    }
 }

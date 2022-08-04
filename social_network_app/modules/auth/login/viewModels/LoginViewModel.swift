@@ -68,6 +68,6 @@ class LoginViewModel {
     
     func setUser(user: User) {
         UserProfileViewModel.shared.userLogin = user
-        UserProfileViewModel.shared.getDataUser()
+        UserProfileViewModel.shared.getDataUser() {}
     }
 }

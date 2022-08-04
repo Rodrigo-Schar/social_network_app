@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class PostsListViewController: UIViewController {
     
@@ -19,25 +20,19 @@ class PostsListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
-        setupImageButton()
-        getPosts()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        //self.postsTableView.reloadData()
+        SVProgressHUD.show()
+        UserProfileViewModel.shared.getDataUser() {
+            self.setupView()
+            self.setupImageButton()
+            self.getPosts()
+        }
     }
     
     func getPosts() {
         viewModel.loadPosts() {
             self.postsTableView.reloadData()
+            SVProgressHUD.dismiss()
         }
-        //viewModel.reloadData = { [weak self] in
-        //    DispatchQueue.main.async {
-        //        self?.postsTableView.reloadData()
-        //    }
-        //}
     }
     
     func setupView() {
@@ -56,7 +51,6 @@ class PostsListViewController: UIViewController {
     @IBAction func addPosts(_ sender: Any) {
         let vc = NewPostViewController()
         vc.typeView = 1
-        vc.delegate = self
         show(vc, sender: nil)
     }
     
@@ -76,11 +70,10 @@ extension PostsListViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = postsTableView.dequeueReusableCell(withIdentifier: ConstantVariables.postCellIdentifier) as? PostTableViewCell ?? PostTableViewCell()
         
         let post = viewModel.posts[indexPath.row]
+        cell.selectionStyle = .none
         cell.setData(post: post)
         
-        cell.likeButton.addTarget(self, action: #selector(likePost(sender:)), for: .touchUpInside)
         cell.likeButton.tag = indexPath.row
-        cell.dislikeButton.addTarget(self, action: #selector(dislikePost(sender:)), for: .touchUpInside)
         cell.dislikeButton.tag = indexPath.row
         cell.commentButton.addTarget(self, action: #selector(commentPost(sender:)), for: .touchUpInside)
         cell.commentButton.tag = indexPath.row
@@ -90,28 +83,16 @@ extension PostsListViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let post = viewModel.posts[indexPath.row]
-        viewModel.addPostForDetail(post: post)
+        PostDetailViewModel.shared.addPostForDetail(post: post)
         
         let vc = PostDetailViewController()
         show(vc, sender: nil)
     }
     
-    @objc func likePost(sender: UIButton) {
-        let buttonTag = sender.tag
-        let post = viewModel.posts[buttonTag]
-        viewModel.addPostReaction(post: post, typeReaction: TypeReactions.like)
-    }
-    
-    @objc func dislikePost(sender: UIButton) {
-        let buttonTag = sender.tag
-        let post = viewModel.posts[buttonTag]
-        viewModel.addPostReaction(post: post, typeReaction: TypeReactions.dislike)
-    }
-    
     @objc func commentPost(sender: UIButton) {
         let buttonTag = sender.tag
         let post = viewModel.posts[buttonTag]
-        viewModel.addPostForDetail(post: post)
+        PostDetailViewModel.shared.addPostForDetail(post: post)
         
         let vc = PostDetailViewController()
         show(vc, sender: nil)
@@ -133,19 +114,4 @@ extension PostsListViewController: UISearchBarDelegate {
         }
         
     }
-}
-
-extension PostsListViewController: NewEditPostDelegate {
-    func postAdded(post: Post) {
-        self.postsTableView.reloadData()
-    }
-    
-    func postEdited(post: Post) {
-        if let index = viewModel.posts.firstIndex(where: { post.id == $0.id }) {
-            let indexPath = IndexPath(row: index, section: 0)
-            self.postsTableView.reloadRows(at: [indexPath], with: .automatic)
-        }
-    }
-    
-    
 }

@@ -43,7 +43,7 @@ class FriendRequestsViewModel {
     }
     
     func confirmFriendRequest(friendRequest: FriendRequest, completion: ( () -> Void )? ) {
-        let request = FriendRequest(id: friendRequest.id, userSenderId: friendRequest.userSenderId, userReceiverId: friendRequest.userReceiverId, state: ConstantVariables.FriendRequestState.accepted.rawValue, createdAt: friendRequest.createdAt, updatedAt: friendRequest.updatedAt)
+        let request = FriendRequest(id: friendRequest.id, userSenderId: friendRequest.userSenderId, userReceiverId: friendRequest.userReceiverId, state: ConstantVariables.FriendRequestState.accepted.rawValue, createdAt: friendRequest.createdAt, updatedAt: DateHelper.dateToDouble(date: Date()))
         
         firebaseManager.updateDocument(document: request, collection: .friendRequests) { result in
             switch result {
@@ -56,7 +56,7 @@ class FriendRequestsViewModel {
     }
     
     func declineFriendRequest(friendRequest: FriendRequest, completion: ( () -> Void )? ) {
-        let request = FriendRequest(id: friendRequest.id, userSenderId: friendRequest.userSenderId, userReceiverId: friendRequest.userReceiverId, state: ConstantVariables.FriendRequestState.declined.rawValue, createdAt: friendRequest.createdAt, updatedAt: friendRequest.updatedAt)
+        let request = FriendRequest(id: friendRequest.id, userSenderId: friendRequest.userSenderId, userReceiverId: friendRequest.userReceiverId, state: ConstantVariables.FriendRequestState.declined.rawValue, createdAt: friendRequest.createdAt, updatedAt: DateHelper.dateToDouble(date: Date()))
         
         firebaseManager.updateDocument(document: request, collection: .friendRequests) { result in
             switch result {

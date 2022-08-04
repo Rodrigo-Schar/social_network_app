@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class ChatListViewController: UIViewController {
     @IBOutlet weak var chatTableView: UITableView!
@@ -16,6 +17,7 @@ class ChatListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         setupView()
         loadChats()
     }
@@ -32,11 +34,17 @@ class ChatListViewController: UIViewController {
         guard let userData = UserProfileViewModel.shared.user else { return }
         viewModel.getChatIdBySender(senderId: userData.id) {
             self.chatTableView.reloadData()
+            SVProgressHUD.dismiss()
         }
     }
 }
 
 extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.chats.count
     }
@@ -44,6 +52,7 @@ extension ChatListViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = chatTableView.dequeueReusableCell(withIdentifier: "ChatCell") as? ChatTableViewCell ?? ChatTableViewCell()
         let chat = viewModel.chats[indexPath.row]
+        cell.selectionStyle = .none
         
         if let userData = UserProfileViewModel.shared.user, userData.id == chat.participant1Id {
             viewModel.getUserChat(userId: chat.participant2Id) {

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SVProgressHUD
 
 class FriendsListViewController: UIViewController {
     
@@ -18,6 +19,7 @@ class FriendsListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        SVProgressHUD.show()
         setupView()
         getFriends()
     }
@@ -34,22 +36,37 @@ class FriendsListViewController: UIViewController {
     func getFriends() {
         viewModel.loadFriends() {
             self.friendsTableView.reloadData()
+            SVProgressHUD.dismiss()
         }
     }
 }
 
 extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 75
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.friends.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = friendsTableView.dequeueReusableCell(withIdentifier: "FriendCell") as? FriendTableViewCell ?? FriendTableViewCell()
+        cell.selectionStyle = .none
         let request = viewModel.friends[indexPath.row]
         
-        viewModel.getUserFriend(userId: request.userSenderId) {
-            if let user = self.viewModel.users.first {
-                cell.setData(user: user)
+        if let userData = UserProfileViewModel.shared.user, userData.id == request.userReceiverId {
+            viewModel.getUserFriend(userId: request.userSenderId) {
+                if let user = self.viewModel.users.first {
+                    cell.setData(user: user)
+                }
+            }
+        } else {
+            viewModel.getUserFriend(userId: request.userReceiverId) {
+                if let user = self.viewModel.users.first {
+                    cell.setData(user: user)
+                }
             }
         }
         
@@ -65,11 +82,21 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
         let buttonTag = sender.tag
         let request = viewModel.friends[buttonTag]
         
-        viewModel.getUserFriend(userId: request.userSenderId) {
-            if let user = self.viewModel.users.first {
-                SendMessageViewModel.shared.userReceiver = user
-                let vc = SendMessageViewController()
-                self.show(vc, sender: nil)
+        if let userData = UserProfileViewModel.shared.user, userData.id == request.userReceiverId {
+            viewModel.getUserFriend(userId: request.userSenderId) {
+                if let user = self.viewModel.users.first {
+                    SendMessageViewModel.shared.userReceiver = user
+                    let vc = SendMessageViewController()
+                    self.show(vc, sender: nil)
+                }
+            }
+        } else {
+            viewModel.getUserFriend(userId: request.userReceiverId) {
+                if let user = self.viewModel.users.first {
+                    SendMessageViewModel.shared.userReceiver = user
+                    let vc = SendMessageViewController()
+                    self.show(vc, sender: nil)
+                }
             }
         }
         
@@ -78,6 +105,20 @@ extension FriendsListViewController: UITableViewDelegate, UITableViewDataSource 
     @objc func deleteFriend(sender: UIButton) {
         let buttonTag = sender.tag
         let request = viewModel.friends[buttonTag]
+        
+        let dialogMessage = UIAlertController(title: "Delete Friend", message: "Are you sure you want to delete your friend?", preferredStyle: .alert)
+        let confirm = UIAlertAction(title: "delete", style: .destructive, handler: { (action) -> Void in
+            self.viewModel.deleteFriendBySenderId(userSenderId: request.userSenderId, userId: request.userReceiverId)
+        })
+                
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            print("Canceled")
+        }
+                
+        dialogMessage.addAction(confirm)
+        dialogMessage.addAction(cancel)
+        self.present(dialogMessage, animated: true, completion: nil)
+        
         
     }
 }

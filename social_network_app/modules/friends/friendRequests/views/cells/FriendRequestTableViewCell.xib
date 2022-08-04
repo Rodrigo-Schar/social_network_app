@@ -17,53 +17,69 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uig-b7-Qak">
-                        <rect key="frame" x="5" y="5" width="55" height="50"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpq-wV-6zO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="uig-b7-Qak">
+                                <rect key="frame" x="10" y="5" width="55" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="55" id="oe1-Ni-hHh"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLf-nH-3lw">
+                                <rect key="frame" x="75" y="5" width="235" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="15" id="DrH-Db-LJS"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <color key="textColor" name="black-color"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oX8-ze-vFE" customClass="PrimaryButton" customModule="social_network_app" customModuleProvider="target">
+                                <rect key="frame" x="75" y="25" width="110" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="baR-eR-ly4"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Confirm"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yv-z0-JQk" customClass="DangerButton" customModule="social_network_app" customModuleProvider="target">
+                                <rect key="frame" x="195" y="25" width="110" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="wJd-wO-TZ3"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Decline"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="new-second-background-color"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="50" id="7Ll-js-qGS"/>
-                            <constraint firstAttribute="width" constant="55" id="a8v-kc-DaQ"/>
+                            <constraint firstItem="oX8-ze-vFE" firstAttribute="top" secondItem="VLf-nH-3lw" secondAttribute="bottom" constant="5" id="3nk-xH-mMc"/>
+                            <constraint firstAttribute="bottom" secondItem="0yv-z0-JQk" secondAttribute="bottom" constant="5" id="8jy-UA-obC"/>
+                            <constraint firstItem="uig-b7-Qak" firstAttribute="leading" secondItem="bpq-wV-6zO" secondAttribute="leading" constant="10" id="DzY-Rx-iXD"/>
+                            <constraint firstItem="VLf-nH-3lw" firstAttribute="top" secondItem="bpq-wV-6zO" secondAttribute="top" constant="5" id="ZTs-KB-cGV"/>
+                            <constraint firstItem="0yv-z0-JQk" firstAttribute="leading" secondItem="oX8-ze-vFE" secondAttribute="trailing" constant="10" id="Zba-fG-5fj"/>
+                            <constraint firstItem="uig-b7-Qak" firstAttribute="top" secondItem="bpq-wV-6zO" secondAttribute="top" constant="5" id="ZgT-Xx-WEG"/>
+                            <constraint firstAttribute="bottom" secondItem="oX8-ze-vFE" secondAttribute="bottom" constant="5" id="ctC-Fp-2sR"/>
+                            <constraint firstItem="VLf-nH-3lw" firstAttribute="leading" secondItem="uig-b7-Qak" secondAttribute="trailing" constant="10" id="dvb-VJ-MF5"/>
+                            <constraint firstAttribute="bottom" secondItem="uig-b7-Qak" secondAttribute="bottom" constant="5" id="jlf-NG-uFh"/>
+                            <constraint firstItem="0yv-z0-JQk" firstAttribute="top" secondItem="VLf-nH-3lw" secondAttribute="bottom" constant="5" id="trH-hh-rDZ"/>
+                            <constraint firstAttribute="trailing" secondItem="VLf-nH-3lw" secondAttribute="trailing" constant="10" id="v0r-Hz-6bB"/>
+                            <constraint firstItem="oX8-ze-vFE" firstAttribute="leading" secondItem="uig-b7-Qak" secondAttribute="trailing" constant="10" id="v3q-yH-wPF"/>
                         </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VLf-nH-3lw">
-                        <rect key="frame" x="65" y="5" width="250" height="15"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="15" id="AOv-k3-b6o"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                        <color key="textColor" name="black-color"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oX8-ze-vFE" customClass="PrimaryButton" customModule="social_network_app" customModuleProvider="target">
-                        <rect key="frame" x="65" y="25" width="110" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="110" id="fra-yG-wN0"/>
-                        </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Confirm"/>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yv-z0-JQk" customClass="SecondaryButton" customModule="social_network_app" customModuleProvider="target">
-                        <rect key="frame" x="185" y="25" width="110" height="30"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="110" id="1of-Tm-na4"/>
-                        </constraints>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" title="Decline"/>
-                    </button>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="bottom" secondItem="0yv-z0-JQk" secondAttribute="bottom" constant="5" id="1Pi-G6-nwW"/>
-                    <constraint firstItem="uig-b7-Qak" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="47e-B8-tKS"/>
-                    <constraint firstItem="oX8-ze-vFE" firstAttribute="leading" secondItem="uig-b7-Qak" secondAttribute="trailing" constant="5" id="8EU-6Y-UBh"/>
-                    <constraint firstItem="0yv-z0-JQk" firstAttribute="top" secondItem="VLf-nH-3lw" secondAttribute="bottom" constant="5" id="N3R-nV-ww9"/>
-                    <constraint firstItem="0yv-z0-JQk" firstAttribute="leading" secondItem="oX8-ze-vFE" secondAttribute="trailing" constant="10" id="Vxy-30-Q2O"/>
-                    <constraint firstAttribute="bottom" secondItem="uig-b7-Qak" secondAttribute="bottom" constant="5" id="YdL-9U-ziD"/>
-                    <constraint firstItem="VLf-nH-3lw" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="fhw-M1-TAf"/>
-                    <constraint firstItem="VLf-nH-3lw" firstAttribute="leading" secondItem="uig-b7-Qak" secondAttribute="trailing" constant="5" id="fnb-OH-ZaG"/>
-                    <constraint firstItem="oX8-ze-vFE" firstAttribute="top" secondItem="VLf-nH-3lw" secondAttribute="bottom" constant="5" id="hVY-VC-92I"/>
-                    <constraint firstItem="uig-b7-Qak" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="kcJ-fM-j57"/>
-                    <constraint firstAttribute="bottom" secondItem="oX8-ze-vFE" secondAttribute="bottom" constant="5" id="wwh-8q-VuW"/>
-                    <constraint firstAttribute="trailing" secondItem="VLf-nH-3lw" secondAttribute="trailing" constant="5" id="yut-nW-RB7"/>
+                    <constraint firstItem="bpq-wV-6zO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="WYi-7l-Y3n"/>
+                    <constraint firstAttribute="bottom" secondItem="bpq-wV-6zO" secondAttribute="bottom" constant="10" id="d5a-Pm-iSu"/>
+                    <constraint firstAttribute="trailing" secondItem="bpq-wV-6zO" secondAttribute="trailing" id="jGm-t0-kzT"/>
+                    <constraint firstItem="bpq-wV-6zO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="n4x-nn-aCX"/>
                 </constraints>
+                <userDefinedRuntimeAttributes>
+                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                        <integer key="value" value="10"/>
+                    </userDefinedRuntimeAttribute>
+                </userDefinedRuntimeAttributes>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
@@ -78,6 +94,9 @@
     <resources>
         <namedColor name="black-color">
             <color red="0.12941176470588237" green="0.12941176470588237" blue="0.12941176470588237" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="new-second-background-color">
+            <color red="0.93725490196078431" green="0.95686274509803926" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
