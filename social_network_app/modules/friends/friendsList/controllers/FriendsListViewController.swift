@@ -24,13 +24,6 @@ class FriendsListViewController: UIViewController {
         getFriends()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        setupView()
-        getFriends()
-        print(self.viewModel.friends.count)
-    }
-    
     func setupView() {
         self.friendsTableView.delegate = self
         self.friendsTableView.dataSource = self
