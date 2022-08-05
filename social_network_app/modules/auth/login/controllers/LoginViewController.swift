@@ -53,6 +53,7 @@ class LoginViewController: UIViewController {
                     case .success(let user):
                         LoginViewModel.shared.addUserLocal(user: user)
                         SceneDelegate.shared?.setupRootControllerIfNeeded(validUser: true)
+                        LoginViewModel.shared.setUser(user: user)
                         self.errorLabel.isHidden = true
                     case .failure(let error):
                         print("Error", error)

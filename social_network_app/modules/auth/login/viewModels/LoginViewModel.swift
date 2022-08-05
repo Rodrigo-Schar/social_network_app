@@ -65,4 +65,9 @@ class LoginViewModel {
             print("Error", err)
         }
     }
+    
+    func setUser(user: User) {
+        UserProfileViewModel.shared.userLogin = user
+        UserProfileViewModel.shared.getDataUser() {}
+    }
 }
