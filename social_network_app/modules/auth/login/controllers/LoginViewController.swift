@@ -19,6 +19,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpKeyboardNotification()
+        // Testing bitrise and firebase distribution
     }
     
     func setUpKeyboardNotification() {
