@@ -66,11 +66,6 @@
 		8471C886286C9810005E069A /* social_network_appUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471C885286C9810005E069A /* social_network_appUITests.swift */; };
 		8471C888286C9810005E069A /* social_network_appUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471C887286C9810005E069A /* social_network_appUITestsLaunchTests.swift */; };
 		8471C895286C9875005E069A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8471C894286C9875005E069A /* GoogleService-Info.plist */; };
-		8471C898286C98EC005E069A /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8471C897286C98EC005E069A /* FirebaseAuth */; };
-		8471C89A286C98EC005E069A /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 8471C899286C98EC005E069A /* FirebaseDatabase */; };
-		8471C89C286C98EC005E069A /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8471C89B286C98EC005E069A /* FirebaseFirestore */; };
-		8471C89E286C98EC005E069A /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 8471C89D286C98EC005E069A /* FirebaseMessaging */; };
-		8471C8A0286C98EC005E069A /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 8471C89F286C98EC005E069A /* FirebaseStorage */; };
 		8471C8A5286C9B23005E069A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8471C8A4286C9B23005E069A /* User.swift */; };
 		849717002887914C009BDEBD /* Reaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849716FF2887914C009BDEBD /* Reaction.swift */; };
 		849717022887B2D8009BDEBD /* Comment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 849717012887B2D8009BDEBD /* Comment.swift */; };
@@ -209,11 +204,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8471C89E286C98EC005E069A /* FirebaseMessaging in Frameworks */,
-				8471C89A286C98EC005E069A /* FirebaseDatabase in Frameworks */,
-				8471C898286C98EC005E069A /* FirebaseAuth in Frameworks */,
-				8471C8A0286C98EC005E069A /* FirebaseStorage in Frameworks */,
-				8471C89C286C98EC005E069A /* FirebaseFirestore in Frameworks */,
 				0503A852E441A1DAAED3ECA5 /* Pods_social_network_app.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,7 +239,6 @@
 				8C946EC136E0C8DFC37C7A77 /* Pods-social_network_app.debug.xcconfig */,
 				B38877C3BB04D7CF5552AD2C /* Pods-social_network_app.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -949,11 +938,6 @@
 			);
 			name = social_network_app;
 			packageProductDependencies = (
-				8471C897286C98EC005E069A /* FirebaseAuth */,
-				8471C899286C98EC005E069A /* FirebaseDatabase */,
-				8471C89B286C98EC005E069A /* FirebaseFirestore */,
-				8471C89D286C98EC005E069A /* FirebaseMessaging */,
-				8471C89F286C98EC005E069A /* FirebaseStorage */,
 			);
 			productName = social_network_app;
 			productReference = 8471C85E286C980E005E069A /* social_network_app.app */;
@@ -1028,7 +1012,6 @@
 			);
 			mainGroup = 8471C855286C980E005E069A;
 			packageReferences = (
-				8471C896286C98EC005E069A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = 8471C85F286C980E005E069A /* Products */;
 			projectDirPath = "";
@@ -1533,45 +1516,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		8471C896286C98EC005E069A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 9.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		8471C897286C98EC005E069A /* FirebaseAuth */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8471C896286C98EC005E069A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAuth;
-		};
-		8471C899286C98EC005E069A /* FirebaseDatabase */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8471C896286C98EC005E069A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseDatabase;
-		};
-		8471C89B286C98EC005E069A /* FirebaseFirestore */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8471C896286C98EC005E069A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseFirestore;
-		};
-		8471C89D286C98EC005E069A /* FirebaseMessaging */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8471C896286C98EC005E069A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseMessaging;
-		};
-		8471C89F286C98EC005E069A /* FirebaseStorage */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8471C896286C98EC005E069A /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseStorage;
-		};
-/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		8471C86A286C980E005E069A /* social_network_app.xcdatamodeld */ = {
